@@ -1,0 +1,72 @@
+#include <iostream>
+
+
+
+int main()
+{
+	//메모리 최소단위 비트
+	//8개 묶어면 바이트(Byte)
+	using namespace std;
+
+	//자료형은 여러가지가 있다.
+	//자료형은 저장되는 크기가 각자 다르다.
+
+	//char는 1Byte를 사용한다.
+	//내부적으론 숫자로 저장한다.
+	char na = 65;
+	char a = 'H';
+
+	//문자열저장은 String
+	//String은 기본데이터타입은 아니다.
+
+	//int는 4Byte를 사용한다.
+	int i = 1;
+	
+	//-128~127 범위가 작은 숫자 표현
+	//short는 2Byte를 사용한다.
+	short s = 2;
+
+	//부동소수점 자료형
+	//메모리사용이 차이남
+	//float는 4Byte를 사용한다.
+	//마지막에 f를 붙여줘야한다.
+	float f = 3.141592f;
+	//double은 8Byte를 사용한다.
+	double d = 3.141592;
+
+
+	//bool연산
+	//내부적으로 숫자로 저장한다.
+	bool b = false;
+	bool b2 = 0;
+	cout << (b ? 1 : 0) << endl;
+
+	//모던 c++에서 auto가 생겼다.
+	//자동으로 자료형을 정한다.
+	auto aVal = 3.141592;
+	auto aVal2 = 3.141592f;
+
+	//sizeof는 Byte를 알 수 있다.
+	cout << sizeof(aVal) << endl;
+	cout << sizeof(aVal2) << endl;
+
+	//변수 초기화방법
+	//1.copy initializaion
+	int i = 123;
+	//2.direct initialization
+	//3으로 바꿔 저장하고 에러는 나지 않는다.
+	int i2(123);
+	//int i2 (3.13);
+
+	//3.uniform initialization
+	//이게 더 엄격하다 에러난다.
+	int i3{ 123 };
+	//int i2 {3.13};
+
+	//같은 데이터형은 여러개 선언할 수 있다.
+	int test, test2;
+	cout << (uintptr_t)static_cast<void*>(&a) << endl;
+	cout << (uintptr_t)static_cast<void*>(&i) << endl;
+
+	return 0;
+}

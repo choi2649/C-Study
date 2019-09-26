@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	//x는 변수 variable
+	//2는 literal
+	//2라는 의미를 전달하기위한 존재
+	int x = 2;
+
+	//"test"라는 문자열도 literal
+	cout << "test" << endl;
+
+	//1 , 2는 피연산자(Operand) or literal 
+	//+는 연산자
+	cout << 1 + 2 << endl;
+
+	//삼항식
+	//x 가 0 보다 크면 1 작으면 2이다.
+	int y = (x > 0) ? 1 : 2;
+
+	cout << "y : " << y << endl;
+
+	return 0;
+}
