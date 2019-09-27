@@ -1,0 +1,94 @@
+생산성 향상을 위해선 IDE를 잘 활용해야한다.
+
+ToolBox
+
+JetBrains 홈페이지 접속
+Tool Box App을 다운받아서 여러 IDE 설치를 권장한다.
+
+Intellij IDEA Ultimate 는 유료지만 자바스크립트,스프링,서블릿을 사용할 수 있다.
+
+프로젝트 생성하기
+
+GroupID : 프로젝트 그룹을 이야기한다.(스프링)
+ArtifactID : 프로젝트 그룹의 하위 모듈(스프링 시큐리티,MVC)
+
+메인메소드 생성하고 실행하기
+
+파일생성 
+	MAC : command + n 
+	윈도우 : Alt+insert
+메인메소드 
+	공통 : psvm
+System.out.println() 
+	공통 : sout
+실행환경 실행 현재  
+	MAC : Ctrl + Shift + R 
+	윈도우 : Ctrl + Shift + f10
+실행환경 실행 이전 
+	MAC : Ctrl + R	 
+	윈도우 : Shift + f10
+
+라인수정하기
+
+1.라인 복제하기 
+	MAC : command +d 
+	윈도우 : Ctrl + d
+2.라인 삭제하기 
+	MAC : command +d 
+	윈도우 : Ctrl + y
+3.문자열 라인 합치기 
+	공통 : Ctrl + Shift + j
+4.라인 단위 옮기기 
+	구문 (메소드 안) 
+	MAC : command + shift + 방향키 
+	윈도우 : ctrl + shift + 방향키
+	라인이동	 
+	MAC : Option + Shift + 방향키  
+	윈도우 : Shift + Alt + 방향키
+5.Element 단위로 옮기기
+	구문 (메소드 안) 
+	MAC : option + command + shift + 방향키 
+	윈도우 : alt + ctrl + shift + 방향키
+
+코드 즉시보기
+
+1.인자값 즉시 보기
+	MAC : command + p 
+	윈도우 : ctrl + p
+2.코드 구현부 즉시 보기(직접 안찾아 가도 됌)
+	MAC : option + space 
+	윈도우 : Shift + Ctrl + i
+
+3.Doc 즉시 보기
+	MAC : F1 
+	윈도우 : ctrl +q
+
+포커스 에디터
+1.단어별 이동
+	MAC : option + 화살표 
+	윈도우 : ctrl + 화살표
+2.단어별 선택
+	MAC : option + shift + 화살표 
+	윈도우 : ctrl + shift + 화살표
+3.라인 첫/끝 이동
+	MAC : fn + 방향키 
+	윈도우 : Home,End
+4.라인 전체 선택
+	MAC : shift + Command + 방향키 
+	윈도우 : Shift + home,end
+5.page Up/Down
+	MAC : Fn + 방향키 
+	윈도우 : PageUp,PageDown
+
+포커스 특수키
+1.포커스 범위 한 단계씩 늘리기
+	MAC : option or alt + 위로 화살표
+	윈도우 : Ctrl + W (위) Shift + Ctrl + W (아래)
+2.포커스 뒤로/앞으로 가기
+	MAC : command +[ or ]
+	윈도우 : ctrl + alt + 방향키
+3.멀티 포커스
+	MAC : option 두번 + 방향키 아래로
+	윈도우 : Ctrl 두번 + 방향키 아래로 
+4.오류 라인으로 자동 포커스
+	공통 : F2 
