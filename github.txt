@@ -1,0 +1,121 @@
+github
+
+github란?
+
+git repository가 많이 모여있는 서비스
+
+개발자들이 소통할 수 있는 Pull request
+
+소스 공유와 참여가 쉽게가능 
+
+
+github 관련용어
+
+github 프로젝트에 들어가면 fork버튼이 있다.
+repository Fork
+프로젝트를 처음부터 생성하는 것이 아니라 다른 사람이 이미 만든 프로젝트를 나의 프로젝트로 옮기는 기능
+
+Pull requests
+소스의 변경사항을 Fork한 저장소에 커밋 후 원작자에게 원본 소스 변경을 요청하는 기능
+즉, 내가 변경한 사항을 원작자에게 변경요청한다.
+
+Social Networking
+다른 사람이 어떤 프로젝트를 참여중이며 어떻게 코드를 작성하는지 볼 수 있고 
+프로젝트에 대한 의견 교환을 할 수 있는 기능
+
+
+Changelogs
+다수의 사용자가 개발을 함께 진행하기 때문에 변경 이력 관리가 어렵지만 Github를
+이용하여 편리하게 진행 할 수 있게 도와주는 기능
+
+
+코딩을 잘하고 싶다면?
+
+다른 공개 저장소를 보기
+즉, 잘 만든 소스를 많이 보기
+
+그럼 소스는 어디있나?
+github에 있다.
+
+github 사용방법
+
+https://github.com 에 접속해 가입한다.
+
+예제 : 자바스크립트 소스들
+https://github.com/trending/javascript 
+
+
+공개저장소 무료이고
+비공개저장소 유료이다.
+
+공개저장소로 하자.
+
+
+repository명
+-원격 저장소의 URL 정보가 로그인 ID / 레포지토리명을 생성
+
+공개 여부
+-공개는 무료, 비공개는 유료
+
+README
+-저장소에 들어왔을 때 처음 보여주는 페이지
+
+
+github저장소 저장하기
+
+github연결하기
+경로만들고 git init실행
+
+git remote [별명] [주소]로 실행
+git remoto -v로 연결된것 확인
+
+원격저장소에 있는 내용 저장하기
+git fetch [별명] [브런치(없어도된다)]
+아직까진 변화없다.
+git pull [별명] [브런치(없어도된다)]
+
+파일 가져올때 사용
+git pull origin master --allow-unrelated-histories
+
+fetch는 원격저장소에 내용을 다운하긴하지만 디렉토리에 변경은 없다.
+pull은 다운받고 merge작업이 이루어져 디렉토리에 데이터가 생긴다.
+
+
+git push
+ex) git push -u origin master
+
+git remote -v 별명보기
+
+포크 안받고 그냥올릴때
+-f하면 강제 (하는거 자제하자)
+로컬 저장소의 내용을 원격 저장소로 업로드
+git push [별명] [브랜치명]
+
+
+공개저장소 다운받기 (포크포함)
+git clone [url]
+
+
+
+Pull Request
+오픈소스에서 기능개선 버그가 있는 경우에 반영요청한다.
+
+Pull Request단계
+
+Fork 저장소복제
+Clone 원격저장소 로컬에 저장
+Branch 브랜치 생성
+Cehckout 작업할 브랜치로변경
+소스변경
+Commit 변경후 로컬저장소에 저장
+Push 원격저장소에 업로드
+Pull Request 원작자에게 송신
+
+Watch
+github는 소셜네트워크 형태이다.
+Watching을 하면 변경시 알림이 온다.
+
+starts
+즐겨찾기 기능이라고 생각하면 된다.
+
+
