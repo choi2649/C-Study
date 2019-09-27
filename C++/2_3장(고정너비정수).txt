@@ -1,0 +1,36 @@
+C++ 11 고정 너비 정수
+Fixed-width Integers
+
+int 형이 플랫폼마다 byte사용량이 다를 수 있다.
+
+불확실성이 있으면 프로그래밍에 불안이 된다.
+이로인해 고정 너비 정수가 나오게되었다.
+
+멀티플랫폼 프로그래밍때 사용된다.
+
+cstdint를 include해서 사용한다
+
+int16_t : 16bit 2byte로 변경한다.
+int8_t : 8bit 1byte로 변경한다.
+	주의점 : 8bit는 char형태라 문자로 변경된다.
+
+자세한것은 나중에 사용할때 알아보기로하자.
+
+#include<iostream>
+#include <cstdint>
+
+int main()
+{
+	using namespace std;
+
+	//2Byte로 변경
+	int16_t i(5);
+	//1Byte로 변경 char형태
+	//특별히 쓸일 아니면 쓰지말자
+	int8_t myInt = 65;
+
+	//A로 출력된다.
+	cout << myInt << endl;
+
+	return 0;
+}

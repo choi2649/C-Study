@@ -1,0 +1,32 @@
+Parameter 매개변수와 Argument 인자
+
+매개변수와 인자의 용어차이
+
+매개변수는 함수의 기능을 바꾸어주는 기능을 한다.
+매개변수는 함수가 끝나는 동시에 메모리에 반납이 된다.
+즉, 새로운 변수가 생성되어 데이터가 복사되는 것이다.
+
+인자는 함수를 사용할때 들어가는 변수를 말한다.
+
+#include <iostream>
+
+using namespace std;
+
+int foo(int a, int b);
+
+//함수에서 사용되는 변수가 매개변수 parameter이다.
+int foo(int a, int b) {
+	cout << "a : " << a << " b : " << b << endl;
+	return a + b;
+}
+
+int main()
+{
+	int a = 3, b = 4;
+
+	//함수를 불러올때 사용되는 변수가 인자 argument이다.
+	foo(6, 7);
+	foo(a, b);
+
+	return 0;
+}

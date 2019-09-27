@@ -1,0 +1,44 @@
+영역제한 열거형 enum class
+
+enum으로만 생성하면 다른 enum안의 같은 순번의 데이터가
+
+같은 숫자처럼 보일 수 있다. 
+enum class로 생성하게 되면 비교를 못하게 막아준다. 
+enum class 명 ::으로 불러온다. 
+같은 enum class끼리는 비교가 가능하다. 
+다른 enum class도 캐스팅하면 비교가 가능하긴 하다. 
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	enum class Color
+	{
+		RED,
+		BLUE,
+	};
+	enum class Fruit
+	{
+		BANANA,
+		APPLE,
+	};
+
+	Color c = Color::RED;
+	Color c1 = Color::RED;
+	Fruit f = Fruit::BANANA;
+	//두 출력 0으로 같지만 class를 선언하면 직접적으로 비교는 안된다.
+	cout << static_cast<int>(c)<< " : " << static_cast<int>(f) << endl;
+
+	//다른 enum class는 비교할 수 없다.
+	/*if (c == f) {
+
+	}*/
+	//같은 class는 비교는 가능하다.
+	if (c == c1) {
+		cout << "같다." << endl;
+	}
+
+	return 0;
+}

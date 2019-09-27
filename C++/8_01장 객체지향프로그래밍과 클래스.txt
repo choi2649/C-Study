@@ -1,0 +1,95 @@
+Object Oriented Progamming
+
+OOP 객체지향 프로그래밍
+
+객체는 데이터와 기능이 묶여있는 개념이다.
+
+친구들의 정보를 출력 프로그램을 작성한다고 생각해보자.
+한명이아닌 여러명의 이름,주소,나이등을 출력해야한다.
+
+데이터를 묶어서 구조체 struct를 생성하는 방법이 있다.
+
+class는 Object를 문법을 구현할때 사용한다고 생각하면된다.
+구조체보다 class는 많은 기능을 사용할 수 있다.
+
+Class도 변수처럼 선언해주어야한다.
+Object 메모리를 차지하도록 정의해주는것을 instanciation이라 한다.
+메모리에 할당된 class를 instance라고 한다.
+
+class는 접근지정자access specifier를 지정해주어야한다.
+접근지정자는 public,private,protected 세가지가 있다.
+
+구조체struct와 class의 큰 차이점
+구조체는 접근지정자가 없다.
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Friend{
+	//멤버
+	string m_name;
+	string address;
+	int age;
+
+	void printFriend() {
+		cout << "name : " << m_name << " addr : " << address << " age : " << age << endl;
+	}
+};
+class ClassFriend{
+//접근제한자
+public:
+	//멤버
+	string name;
+	string address;
+	int age;
+
+	void printFriend() {
+		cout << "name : " << name << " addr : " << address << " age : " << age << endl;
+	}
+};
+
+//함수를 따로 만들어 각변수 파라미터로 입력하기
+void printFriend(const string &name, const string &address, const int &age) {
+	cout << "name : " << name << " addr : " << address << " age : " << age << endl;
+}
+
+//함수를 따로 만들어 구조체를 파라미터로 입력하기
+void printFriend(Friend f) {
+	cout << "name : " << f.m_name << " addr : " << f.address << " age : " << f.age << endl;
+}
+
+int main()
+{
+	Friend f1;
+	f1.m_name = "CHOI";
+	f1.address = "test";
+	f1.age = 100;
+	
+	//파라미터로 다 직접 넣기는 귀찮다.
+	printFriend(f1.m_name, f1.address, f1.age);
+
+	//구조체로 더 간단하게 코드를 작성한다.
+	Friend f2{ "KIM","TEST",133 };
+	//구조체를 파라미터로 사용한다.
+	printFriend(f2);
+
+	//구조체 struct안에 print를 선언한다.
+	f2.printFriend();
+
+	//클래스로 생성하기
+	ClassFriend f3{ "KIM","TEST",133 };
+	f3.printFriend();
+
+	//vector를 클래스로 선언해 쉽게 활용할 수 있다.
+	vector<ClassFriend> friendVec;
+	friendVec.push_back(f3);
+	friendVec.push_back(ClassFriend{ "KIM1","TEST1",1 });
+	for (int i = 0; i < friendVec.size(); i++) {
+		friendVec[i].printFriend();
+	}
+
+	return 0;
+}

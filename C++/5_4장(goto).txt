@@ -1,0 +1,31 @@
+goto
+반복문 대신에 과거에 자주사용했다.
+어셈블리어로 가면 동작은 거의 같다.
+지정한곳으로 가게 명령하는 것이다.
+레이블이름을 지어 그위치로 돌아간다.
+책갈피로 생각하면된다.
+
+돌아갈곳 지정은 돌아갈곳(이름지정):
+돌아가기 작동은 goto 돌아갈곳;으로 한다.
+
+주의할점
+	지금은 거의 사용하지 않는다.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double x;
+
+//돌아갈곳 설정하기
+notGood :
+
+	cout << "cin start" << endl;
+	cin >> x;
+	if (x < 0.0)//goto문 실행방법
+		goto notGood;
+
+	return 0;
+}

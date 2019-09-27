@@ -1,0 +1,74 @@
+순서를 맞춰주는것을 정렬이라한다.
+논리적으로 생각해보고 펜으로도 써보자.
+
+기본적인 선택정렬을 알아보자.
+목표 : 배열에서 가장 큰수와 작은수의 자리를 바꾼다.
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	const int length = 5;
+
+	int aArr[length] = { 3,5,2,1,4 };
+	/*
+	정렬순서
+	3,5,2,1,4
+	1,5,2,3,4
+	1,2,5,3,4
+	1,2,3,5,4
+	1,2,3,4,5
+	*/
+	for (int i = 0; i < length-1; i++) {
+		int temp = 0;
+		int arr = i;
+		for (int s = 0; s < length - i; s++) {
+			cout << aArr[arr] << " > " << aArr[s + i] << endl;
+			if (aArr[arr] > aArr[s + i]) {
+				arr = s + i;
+				
+			}
+		}
+		{
+			temp = aArr[arr];
+			aArr[arr] = aArr[i];
+			aArr[i] = temp;
+		}
+	}
+
+	cout << "sort" << endl;
+	for (int i = 0; i < length; i++) {
+		cout << aArr[i] << endl;
+	}
+
+	return 0;
+}
+
+기본적인 버블정렬을 알아보자.
+목표 : 배열의 데이터를 순차적으로 비교하여 
+앞데이터가 다음배열보다 클경우 자리를 바꾼다.
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	int len = 5;
+	int a[] = { 5,2,3,4,1 };
+
+	for (int i = 0; i < len-1; i++) {
+		for (int s = 0; s < len - (i+1); s++) {
+			//cout << "s : " << s << " a[s+1] : " << a[s + 1] << endl;
+			if (a[s] > a[s + 1]) {
+				int temp = a[s + 1];
+				a[s + 1] = a[s];
+				a[s] = temp;
+			}//end of if
+		}//end of for s
+	}//end of for i
+	for (int i = 0; i < len; i++) {
+		cout << a[i] << endl;
+	}
+	return 0;
+}

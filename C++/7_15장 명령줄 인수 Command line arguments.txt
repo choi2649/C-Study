@@ -1,0 +1,18 @@
+명령줄인수
+Command line arguments
+
+mina()함수안에 파라미터 사용방법
+int 갯수,char *[]실제내용들을 파라미터로 사용가능하다.
+반복문으로 출력해서 로직을 다르게 실행할 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc,char *argv[]) {
+	for (int count = 0; count < argc; count++) {
+		cout << argv[count] << endl;
+	}
+
+	return 0;
+}

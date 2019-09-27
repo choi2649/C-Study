@@ -1,0 +1,28 @@
+프로그래밍은 CPU에서 할일은 지정해주는것이다.
+할일을 지정해줄때 분기,반복등 여러 조건을 정해줄 수 있다.
+중단Halt
+	- exit(숫자)
+점프Jump
+	- goto,break,continue
+조건분기Conditional branches
+	- if,switch
+반복(루프)Loops
+	- while,do while,for
+예외처리
+	- try,catch.throw
+
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() 
+{
+	//출력 2번하는 프로그램
+	cout << "test" << endl;
+	//return은 return type에 맞춰서 값을줘야하지만 exit(숫자)는 상관없이 종료한다.
+	exit(0);
+	cout << "good" << endl;
+	
+	return 0;
+}

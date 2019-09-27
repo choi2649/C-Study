@@ -1,0 +1,38 @@
+프로그래밍은 디버깅이 시간이 오래걸린다.
+
+assert은 디버깅을 컴파일러에게 도움받는 방법이다.
+
+디버그 모드에서만 작동한다.
+assert(false)는 에러가 출력된다.
+assert(조건) 방식으로 작성한다. 조건에 맞지않으면 오류내용을 출력해준다.
+
+static_assert는 컴파일타임에 결정되는 변수만 사용가능하다.
+또, 오류내용 입력이 가능하다.
+
+#include <iostream>
+#include <cassert>
+#include <array>
+
+using namespace std;
+
+void getArrData(array<int, 5> &arr, const int &idx) {
+	//콘솔창에 오류내용이 출력된다.
+	assert(idx >= 0);
+	assert(idx <= arr.size() - 1);
+
+	cout << arr[idx] << endl;
+}
+
+int main() {
+
+	const int num = 5;
+	//반드시 맞아야하는 데이터를 입력한다.
+	assert(num == 5);
+	//컴파일타임에 결정되는 변수만 저장가능하다.
+	static_assert(num == 5,"GOOD");
+
+	array<int, 5> arr{ 1,2,3,4,5 };
+	getArrData(arr, 100);
+
+	return 0;
+}

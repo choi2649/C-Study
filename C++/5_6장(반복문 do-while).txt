@@ -1,0 +1,24 @@
+do-while문
+while문과의 차이
+while문은 조건에 따라 한번도 실행안될 수 있다.
+do-while문은 무조건 한번은 실행된다.
+
+for,while,do-while문중 활용도는 가장 낮다.
+
+#include <iostream>
+
+using namespace std;
+
+int main() 
+{
+	int select = 0;
+
+	do
+	{
+		cout << "selectNum : " << select << endl;
+		cout << "1~5 select" << endl;
+		cin >> select;
+	} while (select < 0 || select > 5);
+
+	return 0;
+}

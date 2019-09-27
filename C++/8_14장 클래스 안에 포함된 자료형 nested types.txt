@@ -1,0 +1,40 @@
+클래스 안에 포함된 자료형 Nested types
+
+클래스구현할때 필요한 자료형을 구현해 사용할 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+
+
+class Fruit
+{
+//클래스에서 사용하는 enum
+public:
+enum class FruitType
+	{
+		APPLE,
+		BANANA,
+		CHERRY,
+	};
+private:
+	FruitType m_ft;
+
+public:
+	Fruit(FruitType ft)
+		:m_ft(ft) {
+	}
+
+	FruitType getFt() {
+		return m_ft;
+	}
+
+};
+int main()
+{
+	cout << "1" << endl;
+	Fruit f(Fruit::FruitType::APPLE);
+
+	return 0;
+}

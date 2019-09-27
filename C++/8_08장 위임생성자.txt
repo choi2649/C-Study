@@ -1,0 +1,56 @@
+위임생성자
+Delegathing Constructors
+생성자가 다른생성자를 사용하는것을 말한다.
+파라미터가 여러개일때 자주 사용한다.
+
+객체지향은 초기화,인풋은 하나인게 좋다.
+
+과거엔 초기화함수를사용했으나 최근 c++에선 위임생성자를 지원해준다.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student
+{
+private:
+	int		m_id;
+	string	m_name;
+
+public:
+
+	Student(const string& name)
+		: Student(0,name) //위임생성자
+	{
+
+	}
+	Student(const int& id, const string& name)
+		:	m_id(id),
+			m_name(name) 
+	{
+		//과거엔 초기화함수를 사용했다.
+		init(id, name);
+	}
+
+	//초기화함수
+	void init(const int& id, const string& name) {
+		m_id = id;
+		m_name = name;
+	}
+
+	void print() {
+		cout << "id : " << m_id << " name : " << m_name << endl;
+	}
+	
+};
+int main()
+{
+	Student st1(0, "Choi");
+	st1.print();
+
+	//비추천
+	Student st2("Choi");
+	st2.print();
+	return 0;
+}

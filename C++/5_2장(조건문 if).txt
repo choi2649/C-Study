@@ -1,0 +1,50 @@
+조건문 if
+if(bool타입){}조건으로 사용한다.
+if문다음 else if()는 다음 조건을 설정할 수 있다.
+else{}는 if의 조건이 안맞을때 실행된다.
+논리연산자 사용이 가능하다.
+return을 사용할 수 있다.
+
+주의할점
+	{}(scope)을 안쓰면 아래 한줄만 동작한다.
+	if(조건)안에 정수가 0(false)이아니면 true로 인식한다.
+	논리연산자가 아닌 =을 사용하면 값을 대입하고 그값으로 if문이 작동한다.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int x,y;
+	cin >> x;
+	cin >> y;
+	//논리연산자 사용
+	if (x == y && x > 0) {
+		cout << "x = y && x > 0" << endl;
+	}
+	
+	if (x > 10) {
+		cout << x << endl;
+	}
+	else if (x > 5) {
+		cout << x << " = 10 > x > 5 " << endl;
+	}
+	else {
+		cout << x << " < 5" << endl;
+	}
+
+	//0이 아니면 true로 본다.
+	if (1) {
+		cout << "if(1)" << endl;
+		x = 10;
+	}
+
+	cout << x << endl;
+
+	//return하는 if
+	if (x == 10) {
+		return 10;
+	}
+	return 0;
+}

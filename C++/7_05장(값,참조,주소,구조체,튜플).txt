@@ -1,0 +1,37 @@
+주소에 의한 인수전달
+Call By address
+
+포인터를 통해 주소를 전달하는걸 말한다.
+포인터 변수도 주소값을 담는 변수다. 
+즉, 파라미터로 가면 포인터변수가 복사된다.
+포인터 자체의 주소는 달라지고 포인터가 가르키고있는 주소는 같다.
+
+주소에 접근해 값을 바꿀 수 있기에 포인터를 사용해 함수에 출력인것 처럼 사용할 수 있다.
+const를 사용하면 값변경이 불가능하다.
+
+Call By Reference와 비슷해보이지만 다르다. 오히려 Call By Value와 비슷하다.
+다만 메모리 주소를 통해 접근할 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+void ptrTest(const int *ptr) {
+	cout << "func() &ptr " << &ptr <<" "<< ptr << " " << *ptr << endl;
+}
+
+int main()
+{
+	int value = 5;
+	cout << value << " " << &value << endl;
+	int *ptr = &value;
+
+	ptrTest(&value);
+
+	//main()과 func()의 포인터 주소가 다르다.
+	cout << "main() &ptr " << &ptr << endl;
+	
+	ptrTest(ptr);
+
+	return 0;
+}

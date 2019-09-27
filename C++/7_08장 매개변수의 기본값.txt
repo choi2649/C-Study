@@ -1,0 +1,31 @@
+매개변수의 기본값
+
+매개변수가 여러개가 있을때 매번 모든 매개변수의 값을 정해주는건 비효율적이다.
+default값을 설정할 수 있다.
+기본값을 설정해준 파라미터를 기준으로 오른쪽 파라미터는 기본값을 모두 설정해주어야한다.
+기본값을 설정하면 오버로딩할때 같은 자료형에 파라미터 갯수가 다르면 에러가 난다.
+
+헤더에 함수를 정의하면 둘중에 한곳에서만 기본값을 정의해주어야한다.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void print(int x = 0) {
+	cout << x << endl;
+}
+void print(string  x) {
+	cout << x << endl;
+}
+void print(char x = ' ') {
+	cout << x << endl;
+}
+
+
+
+int main()
+{
+	print(10);
+	return 0;
+}

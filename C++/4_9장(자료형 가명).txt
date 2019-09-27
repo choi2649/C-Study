@@ -1,0 +1,32 @@
+자료형을 불러올때 별명(가명) 붙여주기
+
+typedef,using을 이용한다
+거리에 사용되는 double형을 별명을 붙여 사용한다면 
+공통으로 사용된 자료형을 관리하기 쉽다.
+복잡한 자료형에 사용하면 보기 좋고 사용하기도 좋다.
+
+#include <iostream>
+#include <cstdint>
+#include <vector>
+
+using namespace std;
+
+
+int main()
+{
+	typedef double distance_t;
+	//고정너비 변수
+	std::int8_t i(97);
+
+
+	//컴파일러입장에선 같다.
+	double distance;
+	distance_t distance2;
+
+	//vector<pair<string, int>> 를 줄여사용하기
+	typedef vector<pair<string, int>> pairlist_t;
+	//using사용
+	using pairlist_t1 = vector<pair<string, int>>;
+
+	return 0;
+}

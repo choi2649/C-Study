@@ -1,0 +1,44 @@
+Header Guards
+
+#pragma once의 의미
+중복될 경우에는 한번만 정의해주면된다.
+
+#ifndef add
+#define add
+
+#endif
+와 같은 의미
+
+main.cpp
+#include <iostream>
+#include "getTest.h"
+//getTest.h안에 add.h가 선언되어있다.
+//헤더가드가 없으면 에러가 난다.
+#include "add.h"
+
+using namespace std;
+
+int main()
+{
+	cout << "test" << endl;
+	getTest();
+
+	return 0;
+}
+
+getTest.h
+
+#pragma once
+#include "add.h"
+
+void getTest()
+{
+	add(1, 2);
+}
+
+add.h
+#pragma once
+int add(int a, int b)
+{
+	return a + b;
+}

@@ -1,0 +1,31 @@
+증감연산자
+
+많이쓰이고 쉽지만 실수할때가 많다.
+
+++,--의 특징은 앞에 붙일 수 있고 뒤에도 붙일 수 있다.
+
+++,--가 앞에 붙으면 먼저 계산하지만 뒤에 붙으면 작업후 마지막에 계산한다.
+
+#include <iostream>
+
+using namespace std;
+
+int add(int a, int b)
+{
+	return a + b;
+}
+
+int main()
+{
+
+	int c = 6;
+
+	//아래형식으로 코딩하면 안된다.
+	//cout << add(c, ++c) << endl;
+
+	int y = 2;
+
+	cout << add(c, ++y) << endl;
+
+	return 0;
+}

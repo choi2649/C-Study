@@ -1,0 +1,63 @@
+CPU와 메모리의 사용알기
+스택Stack
+힙 Heap
+
+프로그램을 실행하면 운영체제는 메모리를 넘겨준다.
+메모리는 여러 구역으로 나뉜다.
+코드,BSS,DATA,스택,힙
+코드 
+	-작성한 프로그램 메모리에 올라가있다. 
+BSS
+	-0으로 초기화된	전역,정적변수가 저장된다.
+DATA
+	-전역,정적변수가 저장된다.
+스택
+	-Stack frame으로 순서대로 쌓인다.
+	-스택은 비교적 빠르다.
+	-스택은 빠르나 비교적 크기가 작다.
+힙
+	-동적메모리가 할당되면 힙에 저장된다.
+	-메모리 어느부분에 쌓이는지 알 수 없다.
+	-할당된메모리가 반납안되면 계속 쌓여 메모리 누수가 생긴다.
+
+#include <iostream>
+
+//BSS 파트 처음에 생겼다가 마지막에 사라진다.
+int g_i = 0;
+
+//3.Stack frame second(),int x
+int second(int x) {
+	return 2 * x;
+}
+
+//2.Stack frame first(),int x,y
+int first(int x) {
+	int y = 3;
+	return second(x + y);
+}
+
+void initArray() {
+	//메모리를 반납하지않으면 사용은 못하는데 메모리엔 할당되어있다.
+	int *ptr2 = new int[1000];
+}
+//1.Stack frame main(),int a,b
+int main()
+{
+	using namespace std;
+	int a = 1, b;
+	b = first(a);
+	cout << b << endl;
+
+	//포인터도 변수다.
+	int *ptr = nullptr;
+	//힙메모리에 동적할당된 주소를 가져온다.
+	ptr = new int[1000000];
+	//힙메모리에 할당된 메모리를 반납한다.
+	delete[] ptr;
+	//메모리반납해도 주소는 가지고있다 초기화해준다.
+	ptr = nullptr;
+
+	initArray();
+
+	return 0;
+}

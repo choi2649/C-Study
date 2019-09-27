@@ -1,0 +1,52 @@
+익명객체 anonymous
+
+이름이 붙은 변수(R-value)를 사용하지않고 바로사용한다.
+
+한번만 사용할 멤버함수를 class를 인스턴스생성하고 사용하면 비효율적이다.
+
+Class를 R-value처럼 접근해 사용가능하다.
+재사용은 불가능하다.
+
+계속 새로 생성한다고 생각하면된다. 생성자,소멸자로 확인 가능하다.
+
+#include <iostream>
+
+using namespace std;
+class A
+{
+private:
+	int a;
+public:
+	void print()
+	{
+		cout << "Hello" << endl;
+	}
+	A(const int& val)
+		:a(val){
+		cout << val << endl;
+		cout <<this<< " constructor" << endl;
+	}
+	~A()
+	{
+		cout << this <<" destructor" << endl;
+	}
+	int getA() const {
+		return a;
+	}
+};
+
+A add(const A& a1, const A& a2) {
+	return A(a1.getA() + a2.getA());
+}
+
+int main()
+{
+	A a(1);
+	//아래 두 인스턴스는 주소가 다르다.
+	A(1).print();
+	A(2).print();
+	
+	cout << add(A(3), A(4)).getA() << endl;
+
+	return 0;
+}

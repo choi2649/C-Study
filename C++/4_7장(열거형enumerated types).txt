@@ -1,0 +1,61 @@
+열거형enum
+어떤 조건을 정할때 그 조건을 다 기억하기는 어렵다.
+그럴때 enum으로 자료형을 생성한다.
+사용자 지정 자료형으로 생성된다.
+내부적으로 정수 0,1,2,3순(100%integer는아님)으로 저장된다.
+기본값으로 특정수를 설정하면 그 수부터 저장된다.
+ex)처음 기본값을 -3으로 설정하면 -3,-2,-1,0,1순으로 된다.
+
+enum 주의점
+	enum안에 선언해놓은것은 전역에서 중복될 수 없다.
+	캐스팅을 할 수 있다. static_cast<enum명>(정수);
+	cin으로 직접입력받을 수 없어 정수형으로 우회하여 받아야한다.
+
+#include <iostream>
+#include <typeinfo>
+#include <string>
+
+using namespace std;
+
+enum colorId {//사용자 지정 자료형
+	COLOR_BLACK,
+	COLOR_RED,
+	COLOR_BLUE,
+	COLOR_GREEN,
+};
+
+enum feelId {//사용자 지정 자료형
+	HAPPY,
+	JOY,
+	//예를들어 colorId와 feelId의 BLUE가 이름이 같다면 에러가난다.
+	BLUE,
+};
+
+int getColor(int colorId)
+{
+	if (colorId == 0) {
+		return 1;
+	}
+	else if (colorId == 1) {
+		return 2;
+	}
+}
+
+int main()
+{
+	colorId apple(COLOR_RED);
+	cout << apple << endl;
+
+	//캐스팅하기
+	colorId id = static_cast<colorId>(3);
+	cout << id << endl;
+	//string으로 입력받기(추천하지 않는다.)
+	string str;
+	getline(cin, str);
+	if (str == "BLACK") {
+		id = static_cast<colorId>(0);
+	}
+	cout << id << endl;
+
+	return 0;
+}

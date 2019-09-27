@@ -1,0 +1,91 @@
+캡슐화 Encapsulation
+접근 지정자 Access Specifiers 
+접근함수Access Functions
+
+큰프로그램을 개발하게 되면 내용이 복잡해진다.
+많은변수,많은함수,많은클래스가 사용된다.
+
+뛰어난 프로그래머는 복잡해보이는걸 단순하게 정리잘한다.
+
+재활용을 강조한다.
+
+접근 지정자 Access Specifiers 
+
+public 밖에서 접근이 가능하게한다.
+private 밖에서 접근하는걸 막아준다.(기본으로 지정)
+
+private으로 접근지정자가 지정된 클래스는 access Functions(접근함수)를 만들어 주어야한다.
+클래스 내부안에 access Functions는 private 변수나 함수에 접근 가능하다.
+
+같은 클래스로 생성된 인스턴스는 같은 클래스의 인스턴스에 접근이 가능하다.
+
+캡슐화장점
+public로 생성 밖에서 변수에 접근해 작업하면 클래스안에 변수가 변경되면 변경해야할 코드가 엄청많아진다.
+
+#include <iostream>
+
+using namespace std;
+
+
+struct sDate
+{
+	int m_month;
+	int m_day;
+	int m_year;
+};
+
+class cDate
+{
+private:	//access specifier(접근지정자)
+	int m_month;
+	int m_day;
+	int m_year;
+//access functions 생성
+public:
+	void setDate(const int &m, const int &d, const int &y)
+	{
+		m_month = m;
+		m_day = d;
+		m_year = y;
+	}
+
+	const int& getMonth() {
+		return m_month;
+	}
+
+	const int& getDay() {
+		return m_day;
+	}
+
+	const int& getYear() {
+		return m_year;
+	}
+
+	void copyFrom(const cDate& original) {
+		//original안에 변수들은 private이다.
+		//같은 클래스 변수접근
+		m_month = original.m_month;
+		m_day = original.m_day;
+		m_year = original.m_year;
+	}
+};
+
+int main()
+{
+	//struct는 바로접근이 가능하다.
+	sDate toDay{ 8,4,2025 };
+	toDay.m_month = 8;
+	toDay.m_day = 4;
+	toDay.m_year = 2025;
+
+	//클래스는 바로 접근할 수 없다.
+	//접근하려면 public 접근지정자를 선언해주어야한다.
+	cDate cToDay;
+	cToDay.setDate(8, 4, 2025);
+	cToDay.getMonth();
+
+	cDate copy;
+	copy.copyFrom(cToDay);
+
+	return 0;
+}

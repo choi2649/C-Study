@@ -1,0 +1,51 @@
+복사생성자 복사초기화 RVO
+
+자신과 똑같은 타입의 데이터가 들어오면 복사하는 것을 말한다. 
+copy constructor를 private로 보내면 복사생성자를 사용할 수 없다.
+
+컴파일러의 판단
+복사할려는 value가 r_value면 복사하지않고 바로 생성한다.
+함수로 return받으면 debug 일때면 복사생성자를 사용하고(다른주소를 가진다) release에선 바로 생성(주소값이 같다)한다.
+
+#include <iostream>
+#include <cassert>
+
+using namespace std;
+class Fraction {
+private:
+	int m_num;
+	int m_den;
+
+public:
+	Fraction(int num, int den) 
+		:m_num(num), m_den(den) 
+	{
+		assert(den != 0);
+	}
+
+	Fraction(const Fraction &frc)
+		:m_num(frc.m_num), m_den(frc.m_den) {
+		cout << "copy constructor called" << endl;
+	}
+
+	friend std::ostream & operator << (std::ostream & out, const Fraction & f) {
+		out << f.m_num << " / " << f.m_den << endl;
+		return out;
+	}
+};
+
+Fraction doSomething()
+{
+	Fraction temp(1, 2);
+	return temp;
+}
+
+int main()
+{
+	Fraction frac(3, 5);
+
+	Fraction cpFrac(frac);
+
+	cout << cpFrac << endl;
+	return 0;
+}

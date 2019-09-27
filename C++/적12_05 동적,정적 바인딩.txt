@@ -1,0 +1,51 @@
+가상 소멸자
+
+상속구조에서 생성자는 자식클래스는 자식클래스 생성자를 사용한다.
+하지만 소멸자는 가상 소멸자를 사용하는게 좋다.
+
+소멸자를 생성하지 않으면 자식소멸자,부모소멸자 순으로 실행된다.
+
+부모클래스에 자식클래스를 대입한후 부모클래스를 delete하면 자식클래스의 소멸자가 실행안돼
+메모리 릭이 생긴다.
+
+부모클래스 소멸자에 virtual 을 해주면 자식 클래스의 소멸자도 실행시켜준다.
+
+#include <iostream>
+
+using namespace std;
+
+class Base
+{
+public:
+	virtual ~Base() {
+		cout << "~Base()" << endl;
+	}
+
+};
+
+class Derived : public Base
+{
+private:
+	int *m_array;
+
+public:
+	Derived(int len)
+	{
+		m_array = new int[len];
+	}
+
+	~Derived() {
+		cout << "~Derived" << endl;
+		delete[] m_array;
+	}
+
+};
+int main()
+{
+	Derived *d = new Derived(5);
+	Base *b = d;
+
+	delete b;
+
+	return 0;
+}

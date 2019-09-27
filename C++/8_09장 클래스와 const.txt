@@ -1,0 +1,94 @@
+클래스와 const
+
+const는 변수를 상수로 만들고 싶을때 사용한다.
+
+클래스의 인스턴스(변수,오브젝트)를 생성할때 const를 선언하면 인스턴스(변수,오브젝트)는 상수이기때문에 내부의 값을 변경할 수 없다.
+내부의 값을 변경하지 않더라도 값을 가져오는 함수도 사용할 수 없다.
+사용할려면 컴파일러가 판단할때는 멤버함수 뒤에 const를 선언해줘야한다.
+멤버함수에 const를 선언하면 컴파일러에게 완벽히 const라고 확인해주는 것이다.
+
+인스턴스를 파라미터로 복사하게되면 클래스 내부에 숨어져있는 복사 컨스트럭터가 인스턴스를 복사해준다.
+
+인스턴스 파라미터도 const 클래스명&를 해주면 복사하지 않는다.
+
+또 const로 파라미터구분없이 오버로딩을 할 수 있다.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Something
+{
+public:
+	int m_value = 0;
+	string m_StrValue = "default";
+
+	//복사 컨스트럭터
+	Something(const Something& st_in) {
+		cout << "copy Constructor" << endl;
+		m_value = st_in.m_value;
+	}
+	Something() {
+		cout << "Constructor" << endl;
+	}
+
+	void setValue(int value) {
+		m_value = value;
+	}
+	//const를 선언해주어야한다.
+	int getValue() const {
+		return m_value;
+	}
+	
+	string& getStrValue() {
+		return m_StrValue;
+	}
+
+	const string& getStrValue() const{
+		return m_StrValue;
+	}
+
+};
+
+void print(Something st) {
+	cout << &st << endl;
+	cout << st.getValue() << endl;
+}
+
+void print2(const Something& st) {
+	cout << &st << endl;
+	cout << st.getValue() << endl;
+}
+
+int main()
+{
+	const Something something;
+	//상수이기 떄문에 에러가 난다.
+	//something.setValue(1);
+	//클래스안 멤버함수에 const를 선언해주어야한다.
+	something.getValue();
+
+	cout << "=====================================" << endl;
+	//복사 컨스트럭터 작동
+	Something something2;
+	cout << &something2 << endl;
+	print(something2);
+
+	cout << "=====================================" << endl;
+	//const 파라미터
+	cout << &something2 << endl;
+	print2(something2);
+
+	cout << "=====================================" << endl;
+
+	//string 테스트
+	something2.getStrValue() = "Test";
+	cout << something2.getStrValue() << endl;
+
+	const Something something3;
+	//변경불가
+	//something3.getStrValue() = "TEST";
+	cout << something3.getStrValue() << endl;
+	return 0;
+}

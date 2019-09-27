@@ -1,0 +1,80 @@
+동적할당메모리를 직접관리하는것보다 vector를 사용하는게 더 쉽다.
+
+동적할당을 할때 new,delete하는게 오래걸린다.
+new와 delete를 최소화하는것이 좋다.
+
+vector는 더 작은쪽으로 resize를 하면 메모리를 반납하지않고 크기만 줄여서 보여준다.
+size,capacity로 알아볼 수 있다.
+
+reserve로 메모리의 용량을 미리 확보할 수 있다.
+출력해보면 확보된 메모리가 다 출력되지 않는다.
+사용하는이유 메모리를 미리확보해서 new,delete를 줄인다.
+
+vector를 stack처럼 사용하기
+스택을 메모리에 쌓는다고 생각하면된다.
+vector에 쌓을때 push를
+메모리에 반납할때 pop을 사용한다.
+
+사용하는이유 reserve로 크기를 설정해놓으면 설정한 크기까진
+new,delete를 계속 할 필요가 없다
+reserve를 너무크게 설정하면 메모리가 낭비된다.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void printStack(const vector<int> &stack) {
+	cout << "printStack" << endl;
+	for (auto &a : stack) {
+		cout << a << endl;
+	}
+	cout << "end" << endl;
+}
+int main()
+{
+	//int *v_ptr = new int[3]{1,2,3};
+	vector<int> v{ 1,2,3 };
+	//size,capacity
+	//capacity 는 실제로 메모리에 가지고 있는 갯수
+	//size는 메모리에서 현재 사용하는 갯수
+	cout << "=====================================" << endl;
+	v.resize(2);
+	for (int &a : v) {
+		cout << a << endl;
+	}
+	cout << v.size() << endl;
+	cout << v.capacity() << endl;
+
+	//강제로 포인터로 변경해서 데이터가져오기
+	//데이터가 남아있는걸 확인할 수 있다.
+	int *ptr = v.data();
+	cout << ptr[2] << endl;
+	cout << "=====================================" << endl;
+	v.reserve(1024);
+	cout << v.capacity() << endl;
+	//사용하고있는 데이터 1,2만 출력된다.
+	for (int &a : v) {
+		cout << a << endl;
+	}
+	cout << "=====================================" << endl;
+	vector<int> stack;
+	//미리 메모리를 확보한다.
+	stack.reserve(1024);
+	stack.push_back(3);
+	printStack(stack);
+	stack.push_back(5);
+	printStack(stack);
+	stack.push_back(7);
+	printStack(stack);
+	stack.pop_back();
+	printStack(stack);
+	stack.pop_back();
+	printStack(stack);
+	stack.pop_back();
+	printStack(stack);
+
+
+	
+	return 0;
+}

@@ -1,0 +1,61 @@
+소멸자 Destructor
+
+변수가 영역을 벗어나 사라질때 호출이되는 함수
+
+소멸자를 선언할땐 ~클래스명()으로 선언한다.
+
+동적할당을 받을때 자주 사용한다.
+반복문에서 동적할당을 할때 delete를 소멸자로 선언해 놓으면 자동으로 메모리를 반납한다.
+
+#include <iostream>
+
+using namespace std;
+
+class Simple
+{
+private:
+	int m_id;
+public:
+	Simple(const int& id)
+		:m_id(id) {
+		cout << "Constructor" << m_id << endl;
+	}
+
+	~Simple() {
+		cout << "Destructor" << m_id << endl;
+	}
+};
+
+class IntArr
+{
+private:
+	int *m_arr = nullptr;
+	int m_length = 0;
+
+public:
+	IntArr(const int length_in) {
+		m_length = length_in;
+		m_arr = new int(length_in);
+	}
+	//소멸자 Destructor
+	//지역을 벗어날때 자동으로 실행된다.
+	~IntArr() {
+		if (m_arr != nullptr) {
+			delete[] m_arr;
+		}
+	}
+
+	int size() {
+		return m_length;
+	}
+};
+int main()
+{
+	//{}지역을 벗어날때 자동으로 소멸자가 자동으로 실행
+	Simple *s1 = new Simple(0);
+	Simple s2(1);
+	Simple s3(2);
+	delete s1;
+
+	return 0;
+}

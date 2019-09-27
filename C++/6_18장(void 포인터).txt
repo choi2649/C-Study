@@ -1,0 +1,46 @@
+포인터는 주소다.
+size에 상관없이 주소는 같다.
+모든 데이터타입의 주소를 저장한다.
+
+자료형과 상관없이 포인터(주소값)저장하기
+
+void pointer는 generic pointer 라고한다.
+
+void pointer의 한계
+*를 사용한 de-reference가 안된다.
+자료형을 알 수 없어 +1연산이 안된다.
+
+void포인터형에서 값을 알려면 casting을 해야한다.
+
+void포인터 사용이유
+다형성 구현할때 사용됬었다.
+#include <iostream>
+
+using namespace std;
+
+
+enum Type {
+	INT,
+	FLOAT,
+	CHAR,
+};
+int main()
+{
+
+	int i = 5;
+	float f = 3.4f;
+	char c = 'c';
+
+	void *ptr = nullptr;
+
+	ptr = &i;
+	ptr = &f;
+	ptr = &c;
+
+	//자료형을 알 수 없어 연산할 수 없다.
+	//cout << ptr + 1 << endl;
+	ptr = &i;
+	cout << *(static_cast<int*>(ptr)) << endl;
+	
+	return 0;
+}

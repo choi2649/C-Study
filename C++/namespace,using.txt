@@ -1,0 +1,58 @@
+C++
+HelloWorld
+출력
+Output
+기존 C
+printf("Hello, %s%d\n","world",123);
+C++방식
+cout 콘솔아웃
+std::cout << "Hello, " << "wolrd" << 123 << std::endl;
+
+std:: 란? 
+-네임스페이스(namespace)
+	자바의 패키지, C#의 네임스페이스와 비슷
+	이런 것들과의 이름 충돌을 피하기 위해
+		함수,클래스,기타 등등
+네임스페이스 생성
+namespace hello
+{
+	void PrintHelloWorld();
+}
+
+기존 C에서 사용할땐 헤더파일이 달라도
+메소드의 이름이 겹치면 컴파일 오류가 났다.
+ex)
+#include "Hello.h"
+#include "world.h"
+a();
+컴파일 오류남
+
+C++에서 네임스페이스를 사용하면 오류가 나지 않는다.
+ex)
+hello::a();
+world::a();
+std::cout, std::endl
+
+using지시문
+자바의 import랑 비슷하다 같지는 않다.
+코드의 길이를 줄여준다.
+using을 쓰지 않을때
+#include<iostream>
+int main()
+{
+	std::cout << "hello, world!" << std::endl;
+	return 0;
+}
+
+using 사용할때
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	cout << "hello, world!" << endl;
+	retrun 0;
+}
+
+
+

@@ -1,0 +1,47 @@
+포인터와 참조
+구조체,클래스에서 사용하면
+포인터와 참조를 통해 구조체나 클래스의 멤버에 접근할 수 있다.
+
+포인터는 ->를 사용하여 멤버에 접근한다.
+(*포인터명)으로 접근할 수 있으나 잘 사용하지 않는다.
+
+참조는 기존 구조체,클래스와 같이 사용할 수 있다.
+참조변수명.멤버 형식으로 사용가능하다.
+
+참조에 포인터를 de-reference해서 값을 넣어줄 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+struct Person {
+	int age;
+	double weight;
+};
+
+int main()
+{
+	Person person;
+	cout << "addr : " << &person << endl;
+	//멤버 선택 연산자
+	person.age = 10;
+	
+
+	//참조 주소값 가져오기
+	Person &ref = person;
+	ref.age = 20;
+	cout << "addr ref : " << &ref << endl;
+
+	Person *ptr = &person;
+	cout << "addr &ptr : " << &ptr << endl;
+	cout << "addr ptr : " << ptr << endl;
+	ptr->age = 30;
+	//()를 꼭 해줘야한다.
+	(*ptr).age = 40;
+
+	Person ref2 = *ptr;
+	cout << "addr ref2 : " << &ref2 << endl;
+	ref2.age = 50;
+
+	return 0;
+}

@@ -1,0 +1,57 @@
+친구 함수와 클래스
+여러개의 클래스 복잡하게 상호작용하면 클래스간의 상호작용을 깔끔히 정리하기 어렵다.
+이때 친구함수와 친구클래스를 사용한다.
+
+클래스안에 함수를 friend로 선언한다.
+
+A,B 두 class가 있다고 생각해보자.
+A class에 B class를 friend로 선언하게되면
+B class에서 A class private:(캡슐화)에 관여가 가능하게된다.
+
+friend선언은 class를 통째로도 가능하고 일부함수만 따로도 가능하다.
+
+friend함수 선언할때 함수의 생성되는 위치를 잘보고 구현해야한다.
+
+#include <iostream>
+
+using namespace std;
+//전방선언
+class A;
+
+class B
+{
+private:
+	int m_val = 2;
+
+public:
+	//A가 선언되어 있기에 A를 사용가능하다.
+	void doSomething(A& a);
+};
+
+class A
+{
+private:
+	int m_val = 1;
+	//class A가 생성될떄 B를 알 수없다.
+	//class통쨰로 선언
+	//friend class B;
+	//B Class가 먼저 선언되어 있어 함수를 구현할 수 있다.
+	//class일부함수만 선언
+	friend void B::doSomething(A& a);
+};
+
+//A에 m_val변수가 있는지 확인 불가능하기때문에 A Class가 구현된후 함수 구현
+void B::doSomething(A& a) {
+	a.m_val = 3;
+	cout << a.m_val << endl;
+}
+
+int main()
+{
+	A a;
+	B b;
+	b.doSomething(a);
+	
+
+	return 0;
+}

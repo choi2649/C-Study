@@ -1,0 +1,5 @@
+프로그래머 편의를위해 생성자를 변환시켜주는 Converting construtor
+
+동적할당 메모리할당 해제하는 delete랑은 다름
+
+explicit,delete는 엄격하게 제한할때 사용한다.

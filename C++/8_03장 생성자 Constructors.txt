@@ -1,0 +1,87 @@
+생성자 Constructor
+객체를 설계하면 객체가 생성될때 객체가 생성되자마자 기능을 수행해야하는 때가있다.
+이때 생성자를 사용한다.
+
+private으로 캡슐화된 클래스 변수의 기본값을 정의한다.
+변수에 기본값을 선언해줄 수 있지만 기준이 때에따라 달라질 수 있다.
+
+반환 리턴타입이 없고 클래스와 이름이 같으면 생성자이다.
+
+자동실행
+생성자를 선언해놓으면 클래스가 메모리가 올라가 인스턴스가 될때 생성자를 실행한다.
+
+생성자도 함수인데 파라미터가 없다면 ()를 하면안된다.
+파라미터에 default value도 선언가능하다.
+모든 파라미터에 default value를 선언하면 기본생성자를 생성하지 못한다.
+
+개발자가 생성자를 선언안하면 클래스안에 default생성자(기본)가 숨어있다.
+
+생성자를 선언하면 {}초기화가 가능해진다. {}은 형변환이 지원되지 않는다.
+
+클래스안에 다른 멤버클래스가 선언되어있으면 멤버클래스가 먼저 생성된다.
+
+#include <iostream>
+
+using namespace std;
+
+class Second
+{
+public:
+	Second() {
+		cout << "Second" << endl;
+	}
+};
+
+class First
+{
+	//멤버클래스가 먼저생성된다.
+	Second sec;
+
+public:
+	First() {
+		cout << "First" << endl;
+	}
+};
+class Fraction
+{
+private:
+	//분자
+	int m_numerator;
+	//분모
+	int m_denominator;
+
+public:
+	//기본생성자
+	Fraction()
+	{
+		m_numerator = 0;
+		m_denominator = 1;
+	}
+	Fraction(const int& n, const int& d)
+	{
+		m_numerator = n;
+		m_denominator = d;
+	}
+	void print()
+	{
+		cout << m_numerator << " / " << m_denominator << endl;
+	}
+
+};
+
+int main()
+{
+	Fraction frac(1.0,3);
+	frac.print();
+	//기본생성자는 ()가 없다.
+	Fraction frac2;
+	frac2.print();
+
+	//frac와 다르게 1.0으로 초기화되지않는다.
+	Fraction frac3 = Fraction{ 1,2 };
+	frac3.print();
+
+	//class안에 class생성순서확인
+	First f;
+	return 0;
+}

@@ -1,0 +1,90 @@
+불리언 자료형
+Boolean
+
+bool형식으로 생성할 수 있다.
+
+값을 두가지만 가질 수 있다.
+true(1),false(0) 두가지만 있다.
+
+내부적으로 1,0으로 처리된다.
+
+출력해도 1,0으로 출력되는걸 볼 수 있다.
+
+std::boolalpha를 통해 true,false로 출력할 수 있다.
+
+bool함수를 만들어 결과값을 bool받는 경우가 많다.
+
+아래 설명에서 1은 true와 같다.
+
+논리연산자
+&& : 양쪽이 모두 1이여야 한다.
+입력	입력	출력
+1	1	1
+0	1	0
+1	0	0
+0	0	1
+
+|| : 한쪽만이라도 1이면 1을 반환한다.
+입력	입력	출력
+1	1	0
+0	1	1
+1	0	1
+0	0	0
+
+if문 조건이 1(true)이라면 동작을 실행한다.
+숫자입력 0이 아니면 모두 true로 받아드린다.
+cin으로 입력할때도 0이 아니면 모두 true로 받아드린다.
+실행시키고 싶은 명령이 한줄이면 {}를 생략하여도 된다.
+
+
+#include <iostream>
+
+bool isEqual(int a, int b) {
+	return a == b ? true : false;
+}
+
+int main()
+{
+	using namespace std;
+
+	//bool 초기화 다른초기화와 같다.
+	//copy initialization
+	bool b1 = true;
+	//direct initializaion
+	bool b2(false);
+	//uniform initializaion
+	bool b3{ true };
+
+
+	//1,0으로 출력
+	cout << b1 << endl;
+	cout << b2 << endl;
+
+	//!를 붙이면 반대로 출력
+	cout << !b1 << endl;
+	cout << !b2 << endl;
+
+	//true,false 출력
+	cout << std::boolalpha;
+	cout << b1 << endl;
+	cout << b2 << endl;
+
+	if (false)
+		cout << "1" << endl;
+	//if문이 true가 아닐경우
+	else
+		cout << "0" << endl;
+	
+	//기본 짝수 홀수 확인하기
+	int a(0);
+	cin >> a;
+	if (a % 2 == 0) {
+		cout << "짝수다" << endl;
+	}
+	else {
+		cout << "홀수다" << endl;
+	}
+
+
+	return 0;
+}

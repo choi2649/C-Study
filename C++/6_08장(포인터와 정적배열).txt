@@ -1,0 +1,67 @@
+포인터와 정적배열의 관계를 이해하면 포인터의 성질을 이해할 수 있다.
+포인터와 배열은 매우 비슷하다. 
+배열이 편의성기능이 몇가지 추가되어있다.
+ex) 배열은 sizeof해보면 배열은 총 Byte가 출력된다. 포인터는 포인터의 Byte가 출력된다.
+
+array변수는 포인터이다. 배열의 첫번째 주소를 담고 있다.
+확인방법 : de-reference 해보면 배열의 첫번째 데이터가 출력된다.
+
+문제가 되는부분
+함수 파라미터로 배열을 넘겨줄때 포인터로 넘어간다.
+확인방법 : sizeof()를 활용해보면 포인터의 Byte가 출력된다.
+
+함수안에서 포인터로 직접접근하여 값을 변경할 수 있다.
+배열이 struct나 class에 들어가있으면 포인터로 변환되지 않는다.
+
+#include <iostream>
+
+using namespace std;
+
+void printArray(int arr[]) {
+	cout << "======" << endl;
+	cout << arr << endl;
+	cout << *arr << endl;
+	cout << sizeof(arr) << endl;
+
+	*arr = 1000;
+}
+
+struct A
+{
+	int arr[3] = { 1,2,3 };
+};
+
+void doSomethig(A a) {
+	//포인터로 변환되지 않는것을 확인할 수 있다.
+	cout << sizeof(a.arr) << endl;
+}
+
+int main()
+{
+	int arr[5] = { 9,7,5,3,1 };
+
+	cout << arr << endl;
+	cout << *arr << endl;
+	cout << sizeof(arr) << endl;
+	//같은 주소를 보고있는지 확인하기
+	int *ptr_arr = arr;
+	cout << ptr_arr << endl;
+	cout << *ptr_arr << endl;
+	cout << sizeof(ptr_arr) << endl;
+
+	char name[] = "choi";
+	cout << *name << endl;
+	printArray(arr);
+	printArray(ptr_arr);
+	cout << arr[0] << "   " << *arr << endl;
+	
+	cout << "======" << endl;
+
+	A a;
+	cout << a.arr[0] << endl;
+	cout << sizeof(a.arr) << endl;
+	
+	doSomethig(a);
+
+	return 0;
+}

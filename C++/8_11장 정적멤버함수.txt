@@ -1,0 +1,54 @@
+정적멤버함수
+
+정적멤버함수와 정적멤버변수와 비슷한듯 다르다.
+
+정적멤버변수는 인스턴스로 정의되기전 클래스 접근 또는
+모든 인스턴스에서 접근이가능하다. (메모리공유)
+
+정적멤버함수는 this를 사용하지 못한다.
+정적멤버함수는 정적멤버변수만 리턴할 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+class Something
+{
+private:
+	static int m_value;
+	int p_value = 1024;
+public:
+	Something() {
+	}
+	
+	static int getValue() {
+		return m_value;
+	}
+
+	int getPValue() {
+		return this -> p_value + this ->m_value;
+	}
+
+};
+
+int Something::m_value = 1024;
+
+int main()
+{
+	cout << Something::getValue << endl;
+	cout << Something::getValue() << endl;
+
+	Something st;
+	cout << st.getValue() << endl;
+
+	//멤버함수
+	int(Something::*ptr)() = &Something::getPValue;
+	//정적멤버함수
+	int (*ptr2)() = Something::getValue;
+
+	cout << "=============" << endl;
+	cout << (st.*ptr)() << endl;
+	cout << (*ptr2)() << endl;
+
+	return 0;
+}

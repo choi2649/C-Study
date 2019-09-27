@@ -1,0 +1,72 @@
+구조체struct
+하나의 자료형으로 복잡한것(사람정보)을 구현하기 어렵다.
+구조체를 이용해 하나의 사용자 정의 자료형으로 구현할 수 있다.
+여러정보집합의 다수개의 정보를 저장할때도 구조체가 좋다.
+구조체안에 함수를 구현할 수 있다.
+구조체안에 구조체를 구현할 수도 있다.
+구조체 대입,구조체 반환값도 가능하다.
+sizeof로 사용Byte를 알수 있다(정확하진않고 조금더 추가될 수 있다).
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Person
+{
+	int id;
+	double	height;
+	float	weight;
+	int		age;
+	//기본값 정의도 가능하다.
+	string	name = "me";
+	//구조체안 함수 구현
+	void printPersonInfo()
+	{
+		cout << height << endl;
+		cout << weight << endl;
+		cout << age << endl;
+		cout << name << endl;
+	}
+};
+
+void printPersonInfo(Person p)
+{
+	cout << p.height << endl;
+	cout << p.weight << endl;
+	cout << p.age << endl;
+	cout << p.name << endl;
+}
+
+int main()
+{
+
+	//사람1정보구현
+	double	height;
+	float	weight;
+	int		age;
+	string	name;
+	//사람2정보구현
+	double	height2;
+	float	weight2;
+	int		age2;
+	string	name2;
+	
+	//구조체구현이 훨씬 간단하다.
+	Person person1{1, 2.0,100.0,20,"me" };
+	Person person2{2, 2.0,100.0,20,"you" };
+
+	//구조체로 묶여있어 인자로 보내기도 편하다.
+	printPersonInfo(person1);
+	//구조체안에 함수 구현 출력하기
+	person1.printPersonInfo();
+
+	//구조체 대입하기
+	Person copyP = person1;
+	cout << &person1 << " copyP addr : " << &copyP << endl;
+
+	//사용Byte알아오기
+	cout << sizeof(copyP) << endl;
+
+	return 0;
+}

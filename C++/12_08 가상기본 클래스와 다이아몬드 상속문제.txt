@@ -1,0 +1,130 @@
+다형성을 설계관점을 만든다.
+
+기본클래스에서 자식클래스에게 제약을 걸어준다.
+
+순수 가상 함수
+	- 자식클래스에서 반드시 오버라이딩 해주어야한다.
+	- virtual 로 선언되고 마지막이 = 0; 이면 순수 가상 함수
+	- 별도로 함수를 구현할 수 있다. 호출할 수 없다.
+
+추상 기본클래스
+	- 순수 가상함수가 포함이된 클래스
+	- abstact class는 인스턴스생성이 안된다.
+
+인터페이스
+	- 순수 가상 함수로만 이루어진 클래스
+	- 파라미터를 인터페이스로 받으면 다양하게 
+	구현된 자식 클래스들을 이용할 수 있다.
+
+순수 가상 함수가 있는 Class를 상속받으면 무조건 오버라이딩해야한다.
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Animal
+{
+protected:
+	string m_name;
+
+public:
+	Animal(string name)
+		:m_name(name) {}
+
+public:
+	string getName() { return m_name; }
+
+	virtual void speak() const = 0;
+};
+
+//void Animal::speak() const
+//{
+//	cout << m_name << " ??? " << endl;
+//}
+
+class Cat :public Animal
+{
+public:
+	Cat(string name)
+		:Animal(name) {
+
+	}
+
+	void speak() const
+	{
+		cout << m_name << " Meow " << endl;
+	}
+};
+
+
+class Dog :public Animal
+{
+public:
+	Dog(string name)
+		:Animal(name) {
+
+	}
+
+	void speak() const
+	{
+		cout << m_name << " Woof " << endl;
+	}
+};
+
+class Cow : public Animal
+{
+public:
+	Cow(string name)
+		:Animal(name) {
+
+	}
+
+	//void speak() const
+	//{
+	//	cout << m_name << " Woof " << endl;
+	//}
+
+};
+
+
+//Interface 예제
+//자신이 정의하지 않고 순수가상함수만 가지고 있다.
+//Interface는 대문자 I를 붙여주는게 관습이다.
+class IErrorlog
+{
+public:
+	virtual bool reportError(const char * errorMessage) = 0;
+
+	virtual ~IErrorlog() {}
+};
+
+class FileErrorLog : public IErrorlog
+{
+public:
+	virtual bool reportError(const char * errorMessage)
+	{
+		cout << "File Error" << endl;
+		return true;
+	}
+
+};
+
+//부모클래스를 이용하기에 여러방법이 사용가능하다.
+void logTest(IErrorlog & log) {
+	log.reportError("Runtime Error!!");
+}
+
+int main()
+{
+	//speak()가 구현이 안되어있다.
+	//Cow c("n");
+
+	Cat c("cat");
+	c.speak();
+
+	FileErrorLog log;
+	logTest(log);
+
+	return 0;
+}

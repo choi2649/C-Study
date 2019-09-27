@@ -1,0 +1,46 @@
+Using
+동일한 이름을 가진 변수,함수가 생길 수 있다.
+클래스,namespace가 다르게 해결할 수 있다.
+
+모호성(Ambiguity)
+using namespace로 여러 namespace를 불러오면 똑같은 변수가 있을 수 있다.
+그러면 namespace를 생략하고 사용할 수 없다.
+namespace명::변수명 으로 사용하던지 아니면 {}영역을 구분줘서 사용해야한다.
+
+using namespace를 선언하면 취소할 수 없다.
+최대한 분리하여 사용하자.
+
+#include <iostream>
+
+namespace a
+{
+	int a1(2);
+}
+namespace b
+{
+	int a1(3);
+}
+
+int main()
+{
+	//std::를 생략할 수 있다.
+	using namespace std;
+	//아래처럼 하나만 불러와 사용할 수 있다.
+	//using std::cout;
+
+	//cout << "hello" << endl;
+
+	//아래 두namespace에 똑같은 이름의 변수가 있다.
+	//사용할려면 영역을 분리해서 사용하자
+	{
+		using namespace a;
+		cout << a1 << endl;
+	}
+	{
+		using namespace b;
+		cout << a1 << endl;
+	}
+	
+
+	return 0;
+}

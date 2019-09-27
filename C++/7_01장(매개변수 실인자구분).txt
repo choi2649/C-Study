@@ -1,0 +1,57 @@
+배열 라이브러리
+
+함수 파라미터로 배열을 보내면 사이즈를 측정할 수 없었다.
+
+array를 사용하면 간단히 사용할 수 있다.
+.size()를 사용하면 사이즈가 출력된다.
+파라미터로 복사되어도 그대로 출력된다.
+복사되기때문에 array가 크기가 크면 reference &를 사용하게 좋다.
+
+.at()을 사용하면 사이즈오버를 미리 체크해준다.
+
+#include <algorithm>에서 sort를 통해 정렬할 수 있다.
+
+#include <iostream>
+#include <array>
+#include <algorithm>
+
+using namespace std;
+
+void arrCheck(const array<int, 5> arr) {
+	cout << &arr << endl;
+	for (int i = 0; i < arr.size(); i++) {
+		cout << arr[i] << endl;
+		cout << arr.at(i) << endl;
+	}
+}
+
+void arrRefCheck(const array<int,5> &arr) {
+	cout << &arr << endl;
+	for (int i = 0; i < arr.size(); i++) {
+		cout << arr[i] << endl;
+		cout << arr.at(i) << endl;
+	}
+}
+
+int main()
+{
+	//int array2[5] = {};
+
+	array<int, 5> arr = {1,10,3,7,5};
+	cout << "arrSize() : " << arr.size() << endl;
+	cout <<"main() : "<< &arr << endl;
+	arrCheck(arr);
+	arrRefCheck(arr);
+
+	//sort
+	std::sort(arr.begin(), arr.end());
+	arrCheck(arr);
+	arrRefCheck(arr);
+
+	//sort 역순
+	std::sort(arr.rbegin(), arr.rend());
+	arrCheck(arr);
+	arrRefCheck(arr);
+
+	return 0;
+}

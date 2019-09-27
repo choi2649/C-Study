@@ -1,0 +1,92 @@
+산술연산자뿐 아니라 입출력연산자도 오버로딩이 가능하다.
+
+입출력연산자 오버로딩을 하지않고 print함수로 구현하면 코드의 양이 많아질 수 있다.
+
+ostream,istream으로 입출력을 정의할 수 있다.
+
+ostream,istream모두 파일입출력에 사용할 수 있어 파일입출력도 같이 사용할 수 있다.
+
+	friend std::ostream& operator << (std::ostream &out, const Point &point) {
+		out << point.m_x+1.0 << " " << point.m_y+1.0 << " " << point.m_z + 1.0;
+		return out;
+	}
+	//const아님
+	friend std::istream& operator >> (std::istream &in, Point &point) {
+		in >> point.m_x >> point.m_y >> point.m_z;
+		return in;
+	}
+
+
+파일입출력은 fstream를 include해야한다.
+#include <fstream>
+
+fried
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+class Point
+{
+private:
+	double m_x, m_y, m_z;
+
+public:
+	Point(double x, double y, double z)
+		:m_x(x), m_y(y), m_z(z) {
+
+	}
+	double getX() {
+		return m_x;
+	}
+	double getY() {
+		return m_y;
+	}
+	double getZ() {
+		return m_z;
+	}
+
+	void Print() {
+		cout << m_x << " " << m_y << " " << m_z;
+	}
+
+	friend std::ostream& operator << (std::ostream &out, const Point &point) {
+		out << point.m_x+1.0 << " " << point.m_y+1.0 << " " << point.m_z + 1.0;
+		return out;
+	}
+	//const아님
+	friend std::istream& operator >> (std::istream &in, Point &point) {
+		in >> point.m_x >> point.m_y >> point.m_z;
+		return in;
+	}
+};
+
+int main()
+{
+	Point p1(3.2, 3.1, 3.5);
+	cout << "p1 : " << &p1 << endl;
+	Point p2(1.2, 1.1, 1.5);
+	cout << "p2 : " << &p2 << endl;
+
+	//print함수사용
+	p1.Print();
+	cout << " ";
+	p2.Print();
+	cout << endl;
+
+	cout << p1 << " " << p2 << endl;
+	//파일출력
+	ofstream of("out.txt");
+	of << p1 << " " << p2 << endl;
+	of.close();
+
+
+	//파일입력
+	ifstream is("out.txt");
+	is >> p1 >> p2;
+	is.close();
+
+	cout << p1 << " " << p2 << endl;
+	return 0;
+}

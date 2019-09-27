@@ -1,0 +1,69 @@
+override,final,공변 반환값
+
+공변 반환형
+Covariant
+
+다형성쓸때 유용하게 쓸 수 있다.
+
+오버로딩(파라미터가 다름)을 하면 상속이 적용안된다.
+
+메소드명 뒤 override 사용하기!
+
+오버라이드 할려했는데 실수로 오버로딩할 수 있다.
+
+그걸 체크하려면 메소드 명 뒤에 override를 붙여준다.
+
+메소드명 뒤 final 사용하기!
+
+하위 클래스가 override하지 않게 하고싶을 수 있다.
+
+상위 클래스 메소드명 뒤에 final을 붙여주면 오버라이드 할 수 없다.
+
+
+반환값이 다르면 오버라이딩 안되지만
+
+반환값이 부모자식관계면 오버라이딩이 된다.
+
+오버라이딩은 되지만 부모 인스턴스에 자식을 대입하면 부모클래스가 출력된다.
+
+#include <iostream>
+
+using namespace std;
+
+class A
+{
+public:
+	virtual void printOverride(int x)  const{ cout << "A" << endl; }
+	
+	//final을 붙이면 오버라이드 할 수 없다.
+	virtual void printFinal(int x) final { cout << "A" << endl; }
+	
+	void print() { cout << "A" << endl; }
+	virtual A *getThis() { return this; }
+};
+
+class B : public A
+{
+public:
+	void printOverride(int x)  const override { cout << "B" << endl; }
+	
+	//에러난다.
+	//virtual void printFinal(int x) { cout << "B " << endl; }
+	
+	void print() { cout << "B" << endl; }
+	B *getThis() { return this; }
+};
+int main() {
+
+	A a;
+	B b;
+	
+	A &ref = b;
+	b.getThis()->print();
+	ref.getThis()->print();
+
+	cout << typeid(b.getThis()).name() << endl;
+	//부모클래스가 출력된다.
+	cout << typeid(ref.getThis()).name() << endl;
+	return 0;
+}

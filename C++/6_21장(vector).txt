@@ -1,0 +1,29 @@
+정적배열에선 std::array를 사용가능하다. 
+
+std::vector는 동적 array를 대체해서 손쉽게 사용가능하다.
+std::vector는 동적할당이 되기때문에 처음부터 사이즈를 정해주지 않아도 된다.
+
+std::array와 같이 .size(),.at()이 사용가능 하다.
+동적할당이므로 .resize()로 크기를 변경할 수 있다.
+
+동적할당은 delete를 해야하는데 vector은 자동으로 사라진다.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	std::vector<int> array;
+	
+	std::vector<int> array2 = { 1,2,3,4,5 };
+	cout << array2.size() << endl;
+
+	vector<int> arr = { 1,2,3,4 };
+	for (auto &a : arr) {
+		cout << a << endl;
+	}
+
+	return 0;
+}

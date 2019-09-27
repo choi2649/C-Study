@@ -1,0 +1,85 @@
+반환값
+
+return by value
+리턴타입으로 선언된 자료형을 반납해준다.
+단점은 변수가 여러번 생성된다.
+
+return by address
+리턴타입으로 포인터형식 즉 주소값을 받는다.
+동적할당할때 사용할 수 있다.
+단점, delete위치가 애매하다.
+주소값만 받아오기에 안에 값이 다를 수 있다.
+
+return by reference
+변수를 선언해서 받으면 문제없이 받아올 수 있다.
+받는쪽에서 참조변수로 받으면 문제가 될 수 있다.
+메모리가 안정적으로 선언된 변수,자료형에서는 사용하기 용이하다.
+
+반환값 여러개 받기
+구조체를 선언해 여러개를 받는 방법이 있다.
+단점은 함수하나를 만들때마다 구조체를 만들어줘야한다.
+튜플tuple를 사용하는 법이있다.
+get<0>(튜플명)으로 받아야하는 귀찮음이 있지만
+c++ 17에선 auto로 받을 수 있다.
+
+#include <iostream>
+#include <tuple>
+
+using namespace std;
+
+int returnByValue(int a) {
+	a += 4;
+	cout << "value : " << &a << " a : " <<a << endl;
+	return a;
+}
+
+
+int* returnByAddress(int size) {
+	return new int[size];
+}
+
+int& returnByReference(int a) {
+	int b = 10;
+	cout << "reference : " << &b << " b : " << b << endl;
+	return b;
+}
+
+tuple<int,double> getTuple()
+{
+	int a = 10;
+	double b = 3.14;
+	return make_tuple(a, b);
+}
+
+int main()
+{
+	//Return By Value
+	int val = returnByValue(3);
+	cout << "&val : " << &val << " val : " << val << endl;
+	
+	//동적할당 포인터 반환
+	int *ptr = returnByAddress(3);
+	cout << "ptr : " << ptr << endl;
+
+	int rVal = returnByReference(3);
+	cout << "&rVal : " << &rVal << endl;
+	cout << rVal << endl;
+	cout << rVal << endl;
+	
+	int &rVal2 = returnByReference(3);
+	cout << "&rVal2 : " << &rVal2 << endl;
+	cout << "&rVal2 : " << &rVal2 << " rVal2 : "<<rVal2 << endl;
+	cout << "&rVal2 : " << &rVal2 << " rVal2 : " << rVal2 << endl;
+	val = returnByValue(5);
+	cout << "&val : " << &val << " val : " << val << endl;
+	cout << "&rVal2 : " << &rVal2 << " rVal2 : " << rVal2 << endl;
+
+	//튜플사용하기
+	tuple<int, double> my_t = getTuple();
+	cout << get<0>(my_t) << endl;
+	cout << get<1>(my_t) << endl;
+
+	//c++ 17 에서 사용가능
+	//auto[a, b] = getTuple();
+	return 0;
+}

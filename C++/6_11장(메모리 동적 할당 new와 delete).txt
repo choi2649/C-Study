@@ -1,0 +1,65 @@
+메모리 할당의 종류
+정적메모리 할당 Static Memory Allocation
+	-전역변수,static변수 한번만들면 프로그램 종료시까지 유지된다.
+
+자동메모리할당
+	-블록안에서 변수를 선언,정적배열 선언 블럭밖으로 나가면 메모리가 OS로 다시 할당된다.
+
+동적메모리 할당 Dynamic Memory Allocation
+	정적배열을 선언할때 배열의 크기가 커지면 용량이 커진다
+	정적할당은 stack에 들어가고 동적할당은Heap에 들어간다.
+	new로 할당받는다.
+	메모리를 할당받는것이기에 포인터로 받아야한다.
+	delete로 반납해주어야한다.
+	delete를 하더라도 메모리의 주소는 있기때문에 garbage값이 있다. 
+	
+다른 프로그램이 메모리를 모두사용하고 메모리를 할당받지 못할때도있다.
+	- 프로그램이 죽어버릴게 짜는 방법
+	- 다른 프로그램의 메모리 반납을 기다리는 방법
+	(std::nothrow)을 사용한다.메모리 할당이 실패하면 nullptr이 할당된다.
+
+메모리누수 memory leak
+	동적메모리 할당을 사용할때 반납을 잊으면 메모리 누수가 발생한다.
+
+#include <iostream>
+
+using namespace std;
+
+//정적메모리 할당
+int a = 0;
+
+int main()
+{
+
+	//자동메모리 할당
+	{
+		int array[10];
+	}
+
+	int *ptr = new (std::nothrow)int (8);
+	cout << *ptr << endl;
+	//ptr이 delete가 되면 ptr2도 메모리가 반납된다.
+	int *ptr2 = ptr;
+
+	//de-reference
+	*ptr = 7;
+
+	cout << *ptr << endl;
+	delete ptr;
+
+	//delete로 메모리를 반납했기에 garvage값이 출력된다.
+	//cout << *ptr << endl;
+	//방지하는방법 0,NULL,nullptr을 사용한다.
+	ptr = nullptr;
+	if (ptr != nullptr) 
+		cout << *ptr << endl;
+
+	while (true) {
+		//delete를 하면 메모리 누수memory leak이 발생한다.
+		int *ptr = new int;
+		cout << ptr << endl;
+		delete ptr;
+	}
+	
+	return 0;
+}

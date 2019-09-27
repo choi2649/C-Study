@@ -1,0 +1,45 @@
+포인터는 메모리의 주소를 저장하는 변수다.
+포인터 연산을 하면 데이터 타입에 따라 주소를 옮겨준다.
+즉, 실생활을 생각하면 지하철의 앞칸, 뒷칸의 열차번호는 현재열차번호를 알면 알 수 있다.
+
+포인터 연산으로 배열의 값과 주소를 똑같이 알아올 수 있다.
+(uintptr_t)를 사용하면 16진수가 아닌 8진수로 출력된다.
+
+
+포인터 변수를 선언하고 변수에 연산 +1,-1해주면 앞뒤 주소를 알 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int val = 7;
+	int *ptr = &val;
+
+	cout << uintptr_t(ptr) << endl;
+	cout << uintptr_t(ptr + 1) << endl;
+	cout << uintptr_t(ptr - 1) << endl;
+
+	int arr[] = { 9,7,5,3,1 };
+
+	int *ptrArr = arr;
+
+	for (int i = 0; i < 5; i++) {
+		cout << arr[i] << " addr : " << (uintptr_t)&arr[i] << endl;
+		cout << *(ptrArr + i) << " addr : " << (uintptr_t)(ptrArr + i) << endl;
+	}
+
+	char name[] = "Choi";
+
+	const int n_name = sizeof(name) / sizeof(name[0]);
+	cout << "n_name : " << n_name << endl;
+
+	for (int i = 0; i < n_name; i++) {
+		cout << *(name + i);
+	}
+
+	return 0;
+}
+
+

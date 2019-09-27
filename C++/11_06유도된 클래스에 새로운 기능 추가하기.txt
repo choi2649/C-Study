@@ -1,0 +1,34 @@
+유도된 클래스(자식클래스)에 새로운 기능 추가하기
+
+protected로 getValue를 사용하지않고 퍼포먼스를 향상시킬 수 있다.
+
+#include <iostream>
+using namespace std;
+class Base {
+protected:
+	int m_public;
+
+public:
+	Base(const int & a) 
+	:m_public(a){
+
+	}
+};
+
+class Derived : public Base
+{
+public:
+	Derived(const int & a) 
+	:Base(a){
+	
+	}
+
+	void setValue(int value) {
+		Base::m_public + value;
+	}
+};
+int main()
+{
+
+	return 0;
+}

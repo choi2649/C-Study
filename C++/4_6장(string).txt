@@ -1,0 +1,51 @@
+문자열
+hello world같은 글을 문자열이라고 한다.
+문자열을 사용할땐 string을 include해서 사용한다.
+string은 기본자료형이 아닌 사람들이 만들어 놓은 사용자 정의 자료형으로 생각하면된다.
+다른 기본자료형처럼 =,(),{}방식으로 정의가 가능하다.
+숫자가 입력가능하지만 정수형이 아닌 문자형 ""으로 입력해야한다.
+입력받을땐 다른 자료형과 같이 cin사용하는 것이 아닌 std::getline(std::cin,str);을 사용한다.
+정수형(int)을 입력받고 std::getline(std::cin,str);을 사용하면 기존 버퍼에 남아있던 정수가 출력된다.
+std::cin.ignore(32767,'\n\);
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+을 이용해 정수입력이후 문자열을 입력받을 수 있다.
++,+=로 문자열에 문자열을 추가해줄 수 있다. append라고한다.
+문자열 길이는 .length()로 확인할 수 있다.
+string 문자열은 마지막에 문장마무리표시가 들어가있어 길이 1이 추가된다.
+
+#include <iostream>
+#include <string>
+#include <limits>
+
+using namespace std;
+
+int main()
+{
+	//문자열을 출력한다.
+	//아래글자는 char[12]로 출력된다.
+	cout << "hello world" << endl;
+
+	int age = 0;
+	cin >> age;
+	cout << age << endl;
+	//cin 버퍼 초기화
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	const string str = "hello world";
+	cout << str << endl;
+	//숫자입력
+	string num = "123";
+
+
+	string num2 = "";
+	//문자열 입력
+	std::getline(std::cin, num);
+	std::getline(std::cin, num2);
+
+	//문자열 더하기(append)
+	cout << num + num2 << endl;
+	num += "test";
+
+	//문자열 길이
+	cout << num.length() << endl;
+	return 0;
+}

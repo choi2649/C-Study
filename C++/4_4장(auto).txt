@@ -1,0 +1,41 @@
+큰프로그램을 작성하면 많은 변수를 작성하게 된다.
+변수의 자료형을 프로그래머가 매번 정하면 효율이 떨어지게된다.
+
+auto는 형추론을 통해 자동으로 자료형을 정해준다.
+auto는 형추론을 해야하기해 자동화를 해주어야한다.
+
+함수 리턴타입도 auto로 설정할 수 있다.
+함수 리턴 값도 변수로 저장할때 auto로 설정가능하다.
+파라미터타입은 auto로 설정할 수 없다.
+
+파라미터타입 설정은 template로 사용할 수 있다.
+
+#include <iostream>
+
+//리턴타입을 auto로 설정했다.
+auto add(int a, int b)
+{
+	return a + b;
+}
+
+//-> double방식으로 설정할 수 있다.
+auto add(double a, double b) -> double
+{
+	return a + b;
+}
+
+int main()
+{
+	using namespace std;
+
+	//int a = 123;
+	//int형
+	auto a = 123;
+	//double형
+	auto b = 23.4;
+
+	//함수 리턴 값도 auto로 설정가능하다.
+	auto result = add(1, 3);
+	
+	return 0;
+}

@@ -1,0 +1,110 @@
+구성(요소)Composition 
+Part-of 두뇌는 육체의 일부이다.
+육체가 없으면 두뇌는 없다
+
+몬스터 클래스에 위치 클래스가 있다고한다면
+몬스터가 없어지면 그몬스터의 위치클래스도 없어져야한다.
+또 위치 클래스는 몬스터의 이름을 알지 못한다.
+
+즉, 몬스터 클래스에서 사용된 위치클래스는 그냥 몬스터의 일부이다.
+
+또한 몬스터클래스가 위치클래스의 동작원리를 알 필요가 없다.
+
+Composition 관계는 전체/일부로 생각하면 된다.
+
+몬스터클래스 {(몬스터전체)
+위치 클래스 : 몬스터클래스의 정보안에 위치가 존재한다.(몬스터의 일부)
+}
+
+main.cpp
+#include <iostream>
+#include "Monster.h"
+using namespace std;
+
+
+
+int main() {
+	//몬스터 정보안에 위치가 들어있다.
+	Monster mon1("name", Position2D(0,0));
+	mon1.getLocation();
+	cout << mon1 << endl;
+	Monster mon2("name2", Position2D(0, 0));
+	mon2.getLocation();
+	{
+		mon1.moveTo(Position2D(1, 1));
+		cout << mon1 << endl;
+	}
+	return 0;
+}
+
+Monster.h
+
+#pragma once
+
+#include <string>
+#include "Position2D.h"
+
+class Monster
+{
+private:
+	std::string m_name;
+
+	//subClass
+	Position2D m_location;//m_x,m_y
+
+	//int m_x;//location
+	//int m_y;
+
+public:
+	//서브클래스로 위치클래스를 사용한다.
+	Monster(const std::string name_in, const Position2D & pos_in)
+		:m_name(name_in), m_location(pos_in) {
+
+	}
+	//set의 원리를 알 수 없다.
+	void moveTo(const Position2D & pos_target) {
+		m_location.set(pos_target);
+	}
+
+	void getLocation () {
+		std::cout << m_location << std::endl;
+	}
+
+
+	friend std::ostream & operator << (std::ostream & out, Monster & monster) {
+		out << monster.m_name << " " << monster.m_location;
+		return out; 
+	}
+};
+
+Position2D.h
+#pragma once
+#include <iostream>
+
+class Position2D
+{
+private:
+	int m_x;
+	int m_y;
+
+public:
+	Position2D(const int & x_in,const int & y_in)
+		: m_x(x_in),m_y(y_in)
+	{}
+
+	void set(const Position2D & pos_target) {
+		set(pos_target.m_x, pos_target.m_y);
+	}
+
+	void set(const int & x_in, const int & y_in) {
+		m_x = x_in;
+		m_y = y_in;
+	}
+
+	friend std::ostream & operator << (std::ostream & out, Position2D & position2D) {
+		out << position2D.m_x << " " << position2D.m_y;
+		return out;
+	}
+};
+
+

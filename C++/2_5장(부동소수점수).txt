@@ -1,0 +1,65 @@
+부동소수점수
+floating point numbers
+
+실수 다루기
+실수는 정수보다 더 정밀한 숫자이다.
+
+부동소수점수 종류
+
+이름		float	double	Long double
+최소크기	4Byte	8Byte	8Byte
+전형적인크기	4Byte	8Byte	8,12 or 16Byte
+
+최근에 나온 언어들은 double기본으로 사용하나
+큰 메모리를 사용하는 프로젝트에선 float가 좋다.
+
+1.0/3.0을 하면  0.3333333333333333333333333~~~이될텐데
+0.333333으로 출력된다.
+
+iomanip안에 setprecision을 사용하여 출력 숫자를 늘릴 수 있다.
+
+5.0/0.0		inf
+-5.0/0.0 -	-inf
+0/0		-nan(ind)
+로 출력된다.
+
+cmath를 include해서 isnan,isinf함수로 확인을 할 수 있다.
+
+주의할 점: 컴퓨터의 계산방법은 우리생각과 다를 수 있다.
+
+#include <iostream>
+#include <iomanip>
+#include <limits>
+
+int main()
+{
+	using namespace std;
+
+
+	//3.14 == 31.4 * 0.1
+	//31.4e-1는 같다
+	//e는 십진수 e-1은 10의 -1제곱
+	float f(3.141592f);
+	double d(3.141592);
+	long double ld(3.141592);
+
+	cout << sizeof(float) << endl;
+	cout << sizeof(double) << endl;
+	cout << sizeof(long double) << endl;
+
+	cout << numeric_limits<float>::min() << endl;
+	cout << numeric_limits<double>::min() << endl;
+	cout << numeric_limits<long double>::min() << endl;
+
+
+	//iomanip로 출력 숫자를 정할 수 있다.
+	cout << 1.0 / 3.0 << endl;
+	cout << setprecision(16) << 1.0 / 3.0 << endl;
+
+	//출력할 수 있는 가장 가까운 수를 출력한다.
+	d = 0.1;
+	cout << d << endl;
+	cout << setprecision(17) << d << endl;
+
+	return 0;
+}

@@ -1,0 +1,68 @@
+반복문 while
+컴퓨터의 장점
+	- 정확하다.
+	- 반복을 지루해하지 않는다.
+
+현업에선 while문 보단 for문을 많이 사용한다.
+하지만 while문을 꼭 사용하는 곳이 있다.
+
+while(조건=true){}형식으로 사용한다.
+조건이 완료되지 않으면 무한루프에 빠진다.
+
+{}안에 변수를 선언에 사용할려면 static을 사용한다.
+조건에 true를 입력하고 내부에서 if(조건)break;로 사용할 수 있다.
+
+while문안에 while문을 사용할 수 있다.
+
+while문은 가시적으로 간결하다.
+
+문제점 
+unsigned int에 --를 사용하면 오버플로우가 발생하여 문제가 생길 수 있다.
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a = 0;
+	//a가 10보다 작다면 이라는 조건을 사용했다.
+	while ( a < 10) {
+		//변수사용하기! 잘 사용안한다.
+		//static int a = 0;
+		cout << "a : " << a << endl;
+		a++;
+	}
+
+//goto문으로 while과 같이 동작하기
+startNumAdd:
+
+	cout << "goto a : " << a << endl;
+	if (a < 20) {
+		a++;
+		goto startNumAdd;
+	}
+
+	a = 2;
+	//unsigned를 사용하면 오버플로우가 발생하여 문제가 생긴다.
+	//unsigned int count = 0;
+	//while (count >= 0) {
+	//	cout << count << endl;
+	//	count--;
+	//}
+
+	//중복while문
+	//구구단출력
+	while (a < 10) {
+		int b = 1;
+		cout << "a : " << a << endl;
+		while (b < 10) {
+			cout << "\t"<< a << " * " << b << " = " << a*b << endl;
+			b++;
+		}
+		a++;
+		b = 0;
+	}
+
+	return 0;
+}

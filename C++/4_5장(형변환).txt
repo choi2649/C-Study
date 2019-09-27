@@ -1,0 +1,58 @@
+형변환
+
+typeinfo를 사용해 자료형을 알 수 있다.
+typeinfo(변수).name()형식
+사용하는 이유
+- 리터럴은 double지만 변수가 int형이라면 int로 저장된다.
+
+암시적형변환
+	- 프로그래머가 설정하지않는데 형변환되는 경우
+	1. 작은것을 큰것으로 바꿀땐 적용된다.
+	  ex)float -> double로 변경될때 적용된다.
+	2. numeric conversion의 문제점
+	  ex)int -> char 큰자료형(작은자료형의 크기를 넘을때)에서 
+             작은자료형으로 갈경우에 제대로 저장되지 않는다.	
+	3.unsigned의 문제점도 있다.unsined int는 int보다 접근순위가 높다.
+
+명시적형변환
+	- 프로그래머가 설정한 형변환   
+	- 대표적으로 세가지방법이 있다.
+	c++스타일
+	int i2 = int(4.0);
+	c스타일
+	i2 = (int)4.0;
+	다른방법
+	i2 = static_cast<int>(4.0);
+
+#include <iostream>
+#include <cmath>
+#include <typeinfo>
+
+int main()
+{
+	using namespace std;
+
+	//int형으로 저장된다.
+	int a = 123.4;
+	cout << a << endl;
+	cout << typeid(4.0).name() << endl;
+
+	float f = 123.4f;
+	double d = f;
+	d = 123.4567891011;
+	f = d;
+
+	int i = 30000;
+	char c = i;
+	//제대로 저장이 안된다.
+	cout << static_cast<int>(c) << endl;
+
+	//명시적형변환
+	//c++스타일
+	int i2 = int(4.0);
+	//c스타일
+	i2 = (int)4.0;
+	//다른방법
+	i2 = static_cast<int>(4.0);
+	return 0;
+}

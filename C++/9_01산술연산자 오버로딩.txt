@@ -1,0 +1,57 @@
+int,double는 산술연산자가 정의되어있다.
+
+사용자정의자료형 ex)class 끼리도 산술연산자를 만들어 줄 수 있다.
+
+밖에서 함수로 생성할 수 있다
+	-외부 함수이므로 public함수로 값을 가져와 더해주어야한다.
+
+밖의 함수를 friend로 선언할 수 있다.
+	-friend 선언으로 private 자료형에 접근가능하다.
+
+클래스 내부함수로 this를 사용할 수 있다.
+	-생성된 함수에서 시작하므로 this로 현재값과 파라미터 값을 더해준다.
+
+#include <iostream>
+
+using namespace std;
+
+class Cents
+{
+private:
+	int m_cents;
+
+public:
+	Cents(int cent): m_cents(cent){}
+	int getCents() const { return m_cents; }
+	//friend Cents operator +(const Cents &c1, const Cents &c2);
+	Cents operator +(const Cents &c2) {
+		cout << this << endl;
+		cout << "this->m_cents : " << this->m_cents << endl;
+		cout << "c2.m_cents : " << c2.m_cents << endl;
+
+		return Cents(this->m_cents + c2.m_cents);
+	}
+};
+
+////friend선언
+//Cents operator +(const Cents &c1, const Cents &c2) {
+//	return Cents(c1.m_cents + c2.m_cents);
+//}
+//
+////외부함수
+//Cents operator +(const Cents &c1, const Cents &c2) {
+//	return Cents(c1.getCents() + c2.getCents());
+//}
+
+int main()
+{
+	Cents c1(4);
+	cout << "c1 : " << &c1 << endl;
+	Cents c2(5);
+	cout << "c2 : " << &c2 << endl;
+
+	cout << (c1 + c2 + Cents(10)+Cents(11)).getCents() << endl;
+
+	return 0;
+
+}

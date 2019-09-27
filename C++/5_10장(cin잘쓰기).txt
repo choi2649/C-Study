@@ -1,0 +1,34 @@
+cin은 console에서 text입력받을때 사용한다.
+
+ignore는 첫번째 버퍼에 값만 사용한다.
+즉 2 3 4 여러개 입력해도 2만 입력이된다.
+사용법 : cin.ignore(32767,'\n');
+
+cin에서 변수형에 맞춰 입력이 틀렸을 경우 fail로 사용할 수 있다.
+
+cin 올바른 사용예
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a;
+	while (true) {
+
+		cin >> a;
+		
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(32767, '\n');
+			cout << "다시입력" << endl;
+		}
+		else {
+			break;
+		}
+
+	}
+	cout << "a : " << a << endl;
+	return 0;
+}

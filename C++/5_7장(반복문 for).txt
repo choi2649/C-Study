@@ -1,0 +1,62 @@
+for문
+가장 많이 사용되는 반복문
+
+for(사용할 변수(초기화);조건;증감연산자;){}
+위에 방법으로 사용한다.
+마지막 조건에 증감연산자말고 다른 조건도 가능하다.
+로직 실행순서
+for (int i = 0; i < 10; i++)//iteration
+1.int i = 0;변수를 초기화한다.
+2.i < 10;조건을 확인하고 {}을 실행한다.
+3.i++를 실행한다.
+4.i < 10;조건을 확인하고 {}을 실행한다.
+5.i++를 실행한다.
+
+특이점은 변수는 초기에 한번만 생성한다.
+또 증감연산자는 {}에 로직이 사용되고 마지막에 증가시킨다.
+
+변수,증감연산자(다른조건)는 여러개 만들 수 있다.
+
+while문과 마찬가지로 unsigend int 오버플로우를 주의해야한다.
+
+#include <iostream>
+
+using namespace std;
+
+int pow(int b, int e)
+{
+	int result = 1;
+	for (int count = 0; count < e; count++) {
+		cout << result << " * " << b << " = "<< endl;
+		result *= b;
+	}
+	return result;
+}
+
+int main()
+{
+	cout << "test" << endl;
+	for (int i = 0; i < 10; i++)//iteration
+	{
+		cout << i << endl;
+	}
+
+	//제곱구하기
+	pow(2, 4);
+
+	//여러개 변수 선언하기
+	for (int i = 0,s = 0; (i + s) < 100; i++, s += 5) {
+		cout << "i : " << i;
+		cout << "\ts : " << s << endl;
+	}//end of for i
+
+	//2중 for문사용
+	//구구단 사용
+	for (int i = 2; i < 10; i++) {
+		cout << i << endl;
+		for (int s = 1; s < 10; s++) {
+			cout << "\t" << i << " * " << s << " = " << i * s << endl;
+		}
+	}
+	return 0;
+}

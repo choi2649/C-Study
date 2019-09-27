@@ -1,0 +1,70 @@
+참조에 의한 인수전달
+Call by reference
+
+참조에 의한 인수전달은 메모리 주소를 그대로 넘긴다.
+변수를 그대로 사용한다고 생각하면 된다.
+
+함수의 출력을 가지고 올때도 사용한다.
+여러개의 데이터의 값을 변경할 수 있다.
+
+참조할때 단점
+리터럴은 참조파라미터로 사용이 불가능하다.(const사용하면 가능)
+
+포인터도 참조가 가능하다.
+파라미터 받을때 int* &ptr형식으로 하면 가능하다.
+
+정적배열로 참조로 가능한데 거의 사용가능하지않는다.
+vector(동적할당배열)를 사용하는 경우가 많다.
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void addOne(int &y) {
+	//Call by Value라면 아무의미가 없다.
+	cout <<"y : " << y << " &y : " << &y << endl;
+	y = y + 1;
+}
+
+
+void addOnePointer(int* &y) {
+	//Call by Value라면 아무의미가 없다.
+	cout << "y : " << y << " &y : " << &y << endl;
+	y = y + 1;
+}
+
+//2개의 데이터 값 변경
+void getSinCos(const double degrees, double &sin_out, double &cos_out) {
+	static const double pi = 3.141592;
+	double radians = degrees * pi / 180.0;
+	sin_out = std::sin(radians);
+	cos_out = std::cos(radians);
+}
+
+int main()
+{
+	//리터럴은 불가능하다.
+	//addOne(7);
+	
+	int x = 5;
+	cout << "x : " << x << " &x : " << &x << endl;
+	addOne(x);
+	cout << "x : " << x << " &x : " << &x << endl;
+
+	double sin_out (0.0);
+	double cos_out (0.0);
+
+	//sin_out,cos_out을 참조해 두개 변수 모두 값이 변경된다.
+	getSinCos(30.0, sin_out, cos_out);
+	cout << "sin_out : " << sin_out << endl;
+	cout << "cos_out : " << cos_out << endl;
+
+	//포인터 reference보내기
+	int *ptr = &x;
+	cout << "ptr : " << ptr << " &ptr : " << &ptr << endl;
+	addOnePointer(ptr);
+
+
+	return 0;
+}
