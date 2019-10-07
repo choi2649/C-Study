@@ -26,7 +26,7 @@ public:
 		cout << (*this)[i] << ' ';
 	}
 	cout << endl;
-}
+	}
 
 };
 
