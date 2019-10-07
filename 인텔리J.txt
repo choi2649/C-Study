@@ -1,94 +1,162 @@
-���꼺 ����� ���ؼ� IDE�� �� Ȱ���ؾ��Ѵ�.
+생산성 향상을 위해선 IDE를 잘 활용해야한다.
 
 ToolBox
 
-JetBrains Ȩ������ ����
-Tool Box App�� �ٿ�޾Ƽ� ���� IDE ��ġ�� �����Ѵ�.
+JetBrains 홈페이지 접속
+Tool Box App을 다운받아서 여러 IDE 설치를 권장한다.
 
-Intellij IDEA Ultimate �� �������� �ڹٽ�ũ��Ʈ,������,�������� ����� �� �ִ�.
+Intellij IDEA Ultimate 는 유료지만 자바스크립트,스프링,서블릿을 사용할 수 있다.
 
-������Ʈ �����ϱ�
+프로젝트 생성하기
 
-GroupID : ������Ʈ �׷��� �̾߱��Ѵ�.(������)
-ArtifactID : ������Ʈ �׷��� ���� ���(������ ��ť��Ƽ,MVC)
+GroupID : 프로젝트 그룹을 이야기한다.(스프링)
+ArtifactID : 프로젝트 그룹의 하위 모듈(스프링 시큐리티,MVC)
 
-���θ޼ҵ� �����ϰ� �����ϱ�
+메인메소드 생성하고 실행하기
 
-���ϻ��� 
+파일생성 
 	MAC : command + n 
-	������ : Alt+insert
-���θ޼ҵ� 
-	���� : psvm
+	윈도우 : Alt+insert
+메인메소드 
+	공통 : psvm
 System.out.println() 
-	���� : sout
-����ȯ�� ���� ����  
+	공통 : sout
+실행환경 실행 현재  
 	MAC : Ctrl + Shift + R 
-	������ : Ctrl + Shift + f10
-����ȯ�� ���� ���� 
+	윈도우 : Ctrl + Shift + f10
+실행환경 실행 이전 
 	MAC : Ctrl + R	 
-	������ : Shift + f10
+	윈도우 : Shift + f10
 
-���μ����ϱ�
+라인수정하기
 
-1.���� �����ϱ� 
+1.라인 복제하기 
 	MAC : command +d 
-	������ : Ctrl + d
-2.���� �����ϱ� 
+	윈도우 : Ctrl + d
+2.라인 삭제하기 
 	MAC : command +d 
-	������ : Ctrl + y
-3.���ڿ� ���� ��ġ�� 
-	���� : Ctrl + Shift + j
-4.���� ���� �ű�� 
-	���� (�޼ҵ� ��) 
-	MAC : command + shift + ����Ű 
-	������ : ctrl + shift + ����Ű
-	�����̵�	 
-	MAC : Option + Shift + ����Ű  
-	������ : Shift + Alt + ����Ű
-5.Element ������ �ű��
-	���� (�޼ҵ� ��) 
-	MAC : option + command + shift + ����Ű 
-	������ : alt + ctrl + shift + ����Ű
+	윈도우 : Ctrl + y
+3.문자열 라인 합치기 
+	공통 : Ctrl + Shift + j
+4.라인 단위 옮기기 
+	구문 (메소드 안) 
+	MAC : command + shift + 방향키 
+	윈도우 : ctrl + shift + 방향키
+	라인이동	 
+	MAC : Option + Shift + 방향키  
+	윈도우 : Shift + Alt + 방향키
+5.Element 단위로 옮기기
+	구문 (메소드 안) 
+	MAC : option + command + shift + 방향키 
+	윈도우 : alt + ctrl + shift + 방향키
 
-�ڵ� ��ú���
+코드 즉시보기
 
-1.���ڰ� ��� ����
+1.인자값 즉시 보기
 	MAC : command + p 
-	������ : ctrl + p
-2.�ڵ� ������ ��� ����(���� ��ã�� ���� ��)
+	윈도우 : ctrl + p
+2.코드 구현부 즉시 보기(직접 안찾아 가도 )
 	MAC : option + space 
-	������ : Shift + Ctrl + i
+	윈도우 : Shift + Ctrl + i
 
-3.Doc ��� ����
+3.Doc 즉시 보기
 	MAC : F1 
-	������ : ctrl +q
+	윈도우 : ctrl +q
 
-��Ŀ�� ������
-1.�ܾ �̵�
-	MAC : option + ȭ��ǥ 
-	������ : ctrl + ȭ��ǥ
-2.�ܾ ����
-	MAC : option + shift + ȭ��ǥ 
-	������ : ctrl + shift + ȭ��ǥ
-3.���� ù/�� �̵�
-	MAC : fn + ����Ű 
-	������ : Home,End
-4.���� ��ü ����
-	MAC : shift + Command + ����Ű 
-	������ : Shift + home,end
+포커스 에디터
+1.단어별 이동
+	MAC : option + 화살표 
+	윈도우 : ctrl + 화살표
+2.단어별 선택
+	MAC : option + shift + 화살표 
+	윈도우 : ctrl + shift + 화살표
+3.라인 첫/끝 이동
+	MAC : fn + 방향키 
+	윈도우 : Home,End
+4.라인 전체 선택
+	MAC : shift + Command + 방향키 
+	윈도우 : Shift + home,end
 5.page Up/Down
-	MAC : Fn + ����Ű 
-	������ : PageUp,PageDown
+	MAC : Fn + 방향키 
+	윈도우 : PageUp,PageDown
 
-��Ŀ�� Ư��Ű
-1.��Ŀ�� ���� �� �ܰ辿 �ø���
-	MAC : option or alt + ���� ȭ��ǥ
-	������ : Ctrl + W (��) Shift + Ctrl + W (�Ʒ�)
-2.��Ŀ�� �ڷ�/������ ����
+포커스 특수키
+1.포커스 범위 한 단계씩 늘리기
+	MAC : option or alt + 위로 화살표
+	윈도우 : Ctrl + W (위) Shift + Ctrl + W (아래)
+2.포커스 뒤로/앞으로 가기
 	MAC : command +[ or ]
-	������ : ctrl + alt + ����Ű
-3.��Ƽ ��Ŀ��
-	MAC : option �ι� + ����Ű �Ʒ���
-	������ : Ctrl �ι� + ����Ű �Ʒ��� 
-4.���� �������� �ڵ� ��Ŀ��
-	���� : F2 
+	윈도우 : ctrl + alt + 방향키
+3.멀티 포커스
+	MAC : option 두번 + 방향키 아래로
+	윈도우 : Ctrl 두번 + 방향키 아래로 
+4.오류 라인으로 자동 포커스
+	공통 : F2 
+	
+	
+인텔리J 강의
+
+검색기능 Text
+
+1. 현재 파일에서 검색
+    1. MAC : command+F
+    2. Window : Ctrl + f
+2. 현재 파일에서 교체
+    1. MAC : command+R
+    2. Window : Ctrl + r
+3. 전체에서 검색
+    1. MAC : command+shift+F
+    2. Window : Ctrl + shift+ f
+4. 전체에서 교체
+    1. MAC : command+shift+R
+    2. Window : Ctrl + shift+ R
+5. 정규표현식으로 검색,교체
+    1. MAC : command+shift+F
+    2. MAC : command+shift+R
+    3. Window : Ctrl + shift+ f
+    4. Window : Ctrl + shift+ R
+    5. 검색 : \/변경단어\/([A-Za-z]*)\/app.js
+    6. 변경 : \/변경단어\/$1\/app.js
+    7. 특이점 
+        1. 정규표현식 [A-Za-z]* 대소문자 모두포함 모든글자 표현
+        2. 정규표현식을 ()로 감싸면 $1,$2등으로 표시가능하다.
+
+검색 - 기타(텍스트외)
+	1.파일 검색
+		1. MAC : command + shift + O
+		2. window : ctrl + shift + O
+		3. 특이점 : Package 명까지 붙여서 검색가능하다
+	2.메소드 검색
+		1. MAC : command + alt + O
+		2. window : ctrl + shift + alt +O
+	3.Action 검색
+		1. MAC : command + shift + A
+		2. window : ctrl + shift + A
+	4.최근 열었던 파일 목록 보기
+		1. MAC : command + E
+		2. window : ctrl + E
+	5.최근 수정한 파일 목록 보기
+		1. MAC : command + shift + E
+		2. window : ctrl + shift + E
+
+자동완성
+	1. 스마트 자동완성
+		1. MAC : Ctrl + Shift + space
+		2. window : Ctrl + Shift + space
+	2. 스태틱 메소드 자동완성
+		1.MAC : Ctrl + space 두번
+		2. window : Ctrl + space 두번
+	3. Getter/Setter/생성자 자동완성
+		1. MAC : command + N
+		2. window : alt + insert
+	4. Override 메소드 자동완성
+		1. MAC : ctrl + i
+		2. window : ctrl + i
+
+Live Template
+	1. Live Template 소개
+		1. 자동으로 만들어주는 축약어 psvm sout 등
+		2. MAC : command + J
+		3. Window : ctrl + J
+	2. Live Template 추가하기
+		1. Command + shift + A 로 Live Template 검색 후 처리
