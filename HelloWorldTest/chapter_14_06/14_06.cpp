@@ -19,6 +19,7 @@ public:
 		//사용하면 안된다.
 		//throw "ttt";
 	}
+
 };
 
 int main()

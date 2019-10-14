@@ -1,0 +1,40 @@
+git
+	사용단어
+	git
+	경로에서 사용자 id설정하기
+	git config --global user.name "이름명"
+	
+
+github
+	사용이유 : 여러사람들과 협업 또는 다른사람들에게 배포할때 사용한다.
+	
+	용어 : Repositories -> 내 코드 저장소
+
+	Git 설치 : Git-scm.com
+	GUI tool : sourceTree
+
+	프로젝트 생성시 Initialize this repository with a README 체크시 README.md파일 생성
+	README 파일: 다른 사람들이 무슨 프로젝트인지 알 수 있게 정의해논다.
+	마크업 형식으로 문서 변경가능하다.
+
+	.gitignore 파일 프로젝트의 부산물을 걸러주는 필터역할(파일내용안에 걸러질 파일들을 기록한다.)
+
+	서버저장소에서 파일가져오기
+	git clone url명
+	
+	프로젝트에 파일 더하기
+	git add 파일명
+
+	프로젝트 상태확인하기
+	git status
+
+	프로젝트 commit 하기(로컬 PC에 commit github저장소에 올라가지않음) 
+	git commit			<= vim접속 해서 커밋제목,커밋메시지 입력
+	git -m "commit메시지"		<= 간편 커밋 (한줄메시지)
+	git -a -m "commit메시지"	<= 변경된 파일까지 업로드 간편 커밋 (한줄메시지)
+
+	프로젝트 push 하기 (commit한 파일 github저장소에 올리기)
+	git push
+
+	프로젝트 pull 하기 (github저장소에서 파일 가져오기)
+	git pull
