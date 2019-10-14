@@ -66,7 +66,7 @@ github저장소 저장하기
 github연결하기
 경로만들고 git init실행
 
-git remote [별명] [주소]로 실행
+git add remote [별명] [주소]로 실행
 git remoto -v로 연결된것 확인
 
 원격저장소에 있는 내용 저장하기
