@@ -24,19 +24,14 @@ public:
 
 int main()
 {
-	try
-	{
-		int *arr = new int[10000];
-		//스마트 포인터
-		unique_ptr<int> up_i(arr);
-		throw "error";
+	if (__cplusplus == 201703L) std::cout << "C++17\n";
 
-		//스마트포인터가 있을시 필요없다.
-		//delete[] arr;
-	}
-	catch (...)
-	{
+	else if (__cplusplus == 201402L) std::cout << "C++14\n";
 
-	}
+	else if (__cplusplus == 201103L) std::cout << "C++11\n";
+
+	else if (__cplusplus == 199711L) std::cout << "C++98\n";
+
+	else std::cout << "pre-standard C++\n";
 	return 0;
 }
